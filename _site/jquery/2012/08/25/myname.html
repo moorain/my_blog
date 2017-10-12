@@ -3,14 +3,14 @@
 	 <head>
 <!--　
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-　　　<title>Moorain</title>
+　　　<title>嗯嗯</title>
 -->
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>Moorain</title>
+    <title>嗯嗯</title>
     <!-- Bootstrap -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
@@ -102,87 +102,17 @@
 	<!--顶部导航结束-->
 <!--banner-->
 <!--banner结束-->
-<div class="row feature" id="content" style="padding: 0;margin: 0;">
-            <div class="col-md-12" id="left_con">
-				<!--banner-->
-<!---->
-<!--内容-->
-<div class="container">
-	<div class="eassy col-md-5" style="padding-left: 20px;height: 400px;overflow: hidden; margin-right: 20px;margin-left: 10px;">
-		<!--<h2>Moorain</h2>
-		<p>最新记录</p>-->
-		<ul>
-		　　　　
-		　　　　　　<li>28 Aug 2012 <a href="/jekyll_demo/html/2012/08/28/hello-world.html">你好，世界速度</a></li>
-		　　　　
-		　　　　　　<li>25 Aug 2012 <a href="/jekyll_demo/jquery/2012/08/25/myname.html">嗯嗯</a></li>
-		　　　　
-		　　　　　　<li>25 Aug 2012 <a href="/jekyll_demo/javascript/2012/08/25/hello-world.html">你好，世界</a></li>
-		　　　　
-		　　　　　　<li>15 Aug 2012 <a href="/jekyll_demo/css/2012/08/15/hello-world.html">你好，世界2</a></li>
-		　　　　
-		　　　　　　<li>14 Aug 2012 <a href="/jekyll_demo/html/2012/08/14/hello-world.html">你好，世界1</a></li>
-		　　　　
-		</ul>
-	</div>
-	<!--个人信息-->
-	<div class="eassy col-md-3" style="margin-right: 20px;margin-left: 10px;text-align: center;">
-		<img src="img/header.jpg" width="100px" style="padding-top: 20px;">
-		<p>github</p>
-		<p>新浪微博</p>
-		<p>QQ</p>	
-	</div>
-	<div class="eassy col-md-3" style="margin-right: 20px;margin-left: 10px;">
-			
-	<h5>HTML</h5>
-<!--<span>文章数量：</span></span>2</span>-->
-<ul class="arc-list" style="list-style: none;">
-    
-        	<li><a href="/jekyll_demo/html/2012/08/28/hello-world.html">你好，世界速度</a><span id="date">
-        	28/08/2012
-        </span></li>
-    
-        	<li><a href="/jekyll_demo/html/2012/08/14/hello-world.html">你好，世界1</a><span id="date">
-        	14/08/2012
-        </span></li>
-    
-</ul>
-
-	<h5>CSS</h5>
-<!--<span>文章数量：</span></span>1</span>-->
-<ul class="arc-list" style="list-style: none;">
-    
-        	<li><a href="/jekyll_demo/css/2012/08/15/hello-world.html">你好，世界2</a><span id="date">
-        	15/08/2012
-        </span></li>
-    
-</ul>
-
-	<h5>JavaScript</h5>
-<!--<span>文章数量：</span></span>1</span>-->
-<ul class="arc-list" style="list-style: none;">
-    
-        	<li><a href="/jekyll_demo/javascript/2012/08/25/hello-world.html">你好，世界</a><span id="date">
-        	25/08/2012
-        </span></li>
-    
-</ul>
-
-	<h5>jQuery</h5>
-<!--<span>文章数量：</span></span>1</span>-->
-<ul class="arc-list" style="list-style: none;">
-    
-        	<li><a href="/jekyll_demo/jquery/2012/08/25/myname.html">嗯嗯</a><span id="date">
-        	25/08/2012
-        </span></li>
-    
-</ul>
+	<div class="col-md-2 hidden-xs" id="toc">
+		<h2>目录</h2>
 
 	</div>
-	
-</div>
-
-
+<div class=" feature container" id="content">
+	<div class="col-md-2" id="toc2">
+	</div>
+     <div class="col-md-9" id="left_con">
+				<h2>嗯嗯</h2>
+<p>我的第5篇文章</p>
+<p>25 Aug 2012</p>
      </div>
 </div>
 		
@@ -193,6 +123,36 @@
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+     <script type="text/javascript">
+     	window.onload = function(){
+     		var ti = $("h3")
+     		for(i = 0;i<ti.length;i++){
+     			var  aa  = document.createElement('a');  
+	     		console.log(aa)
+	     		$("#toc").append(aa);
+	     		
+     		}
+     		var num = [];
+	     	for(var i = 0;i<ti.length;i++){
+//	     		var aa = $('<a></a>').text("111")
+				
+//得到每个h3标签内的文字，加入到目录a标签内
+	     		var txt = $("h3")[i].innerHTML;
+	     	    $("#toc a")[i].innerHTML = txt;
+//将获取到h3标签的高度存入数组中
+	     	    var top = $("h3")[i].offsetTop;
+	     	    num.push(top);
+	     	}
+//设置点击事件
+	     	     $("#toc a").click(function(){
+	     	     	var index = $("#toc a").index(this)
+	     	    	$("body").scrollTop(num[index])
+	     	    })
+     	}
+     	
+     	
 
+
+     </script>
 　　</body>
 </html>
