@@ -5,9 +5,10 @@ title: Moorain
 <!--banner-->
 <!--{% include banner.html %}-->
 <!--内容-->
-<div class="container">
-	<div class="eassy col-md-5" style="height: 600px;overflow: hidden;">
-		<h2>最近记录</h2>
+<div class="" style="margin: 0;padding: 0; width: 100%;">
+	<div class="eassy col-md-6" style="height: 600px;overflow: hidden;">
+		<div class="bor">
+			<h2>最近记录</h2>
 		<!--<h2>{{ page.title }}</h2>
 		<p>最新记录</p>-->
 		<ul style="list-style: none;padding:0 ;">
@@ -15,17 +16,16 @@ title: Moorain
 	　　　　　　<li>
 					<h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
 					<p>{{ post.excerpt | strip_html }}</p>
-					
-					
-					<!--日期--><span>{{ post.date | date_to_string }} </span>
-					
-	
+					<!--日期--><span>{{ post.date | date_to_string }} </span>	
 			</li>
 	　　　　{% endfor %}
 		</ul>
+		</div>
+		
 	</div>
 	<!--个人信息-->
-	<div class="eassy col-md-3" style="margin-left: 10px;">
+	<div class="eassy col-md-3">
+		<div class="bor">
 		<h2>文章分类</h2>
 		{% for category in site.categories %}
 		<h3>{{ category | first }}</h3>
@@ -38,12 +38,19 @@ title: Moorain
 		    {% endfor %}
 		</ul>
 		{% endfor %}
+		</di>
 	</div>
+	<!--<div class="col-md-1" style="background: red;">
+		
+	</div>-->
 	<!--个人信息-->
-	<div class="eassy col-md-3" style="margin-left: 10px;text-align: center;">
-		<img src="img/header.jpg" width="100px" style="padding-top: 20px;">
-		<p>github</p>
-		<p>新浪微博</p>
-		<p>QQ</p>	
-	</div>
+	<!--<div class="eassy col-md-3" style="text-align: center;">
+		<div class="bro">
+			<img src="img/header.jpg" width="100px" style="padding-top: 20px;">
+			<p>github</p>
+			<p>新浪微博</p>
+			<p>QQ</p>	
+		</div>
+		
+	</div>-->
 </div>
