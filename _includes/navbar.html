@@ -1,30 +1,47 @@
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="menu-nav">
-<div class="container">
+
+<nav class="navbar navbar-default" id="nav">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">切换导航</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Moorain</a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="background: gainsboro;">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{site.baseurl}}/">Moorain</a>
     </div>
-    <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li ><a href="{{site.baseurl}}/">主页</a></li>
-                <li><a href="{{site.baseurl}}/list/">博客</a></li>
-                <!--子菜单-->
-                <!--<li class="dropdown">
-                    <a href="{{site.baseurl}}/list/" class="dropdown-toggle" data-toggle="dropdown">分类 <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="http://www.baidu.com" data-tab="tab-chrome">HTML/CSS</a></li>
-                        <li><a href="#feature-tab" data-tab="tab-firefox">JavaScript</a></li>
-                        <li><a href="#feature-tab" data-tab="tab-safari">实用工具</a></li>
-                        <li><a href="#feature-tab" data-tab="tab-opera">其他</a></li>
-                    </ul>
-                </li>-->
-                <li><a href="#" data-toggle="modal" data-target="#about-modal">关于</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{{site.baseurl}}/">Home <span class="sr-only">(current)</span></a></li>
+        <li class="blogli"><a href="{{site.baseurl}}/list/">Blog</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

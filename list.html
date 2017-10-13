@@ -3,10 +3,10 @@ layout: default
 title: Moorain-list
 ---
 <!-- tag列表 -->
-<div class="panel panel-default tags">
-	<div class="panel-heading title">
+<div class="panel panel-default tags" style="margin-bottom: 0;">
+	<!--<div class="panel-heading title">
 	  <h3>标签云</h3>
-	</div>
+	</div>-->
     <div class="panel-body list" id="tagslist">
         {% for tag in site.tags %}
             <a class="taglink" href="##" data-target-cate="#{{tag.first}}">
@@ -20,15 +20,16 @@ title: Moorain-list
 	{% for category in site.categories %}
 	<h2 class="tit2">{{ category | first }}</h2>
 	<p style="color: grey;"><span>文章数量：</span><span>{{ category | last | size }}</span></p>
-	<ul class="arc-list" style="list-style: none; padding: 0;">
+	<ul class="arc-list" style="list-style: none; padding: 0; border-bottom: 1px dashed #ccc;">
 	    {% for post in category.last %}
-	        <li><h4><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h4><span id="date">
-	        	{{ post.date | date:"%d/%m/%Y"}}
-	        </span></li>
+	        <li><h4><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h4>
+	        	<span id="date">{{ post.date | date:"%d/%m/%Y"}}</span>
+	        </li>
 	    {% endfor %}
 	</ul>
 	{% endfor %}
 </div>
+
 
 <script type="text/javascript">
 	function tagss(){
@@ -42,7 +43,7 @@ title: Moorain-list
 		for(i = 0;i<tags.length;i++){
 			tags[i].onclick = function(){
 				var index =$("#tagslist a").index(this)
-			    $("body").scrollTop(h2h[index])
+			    $("body").scrollTop(h2h[index]-60)
 			}
 		}
 	}
