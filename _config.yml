@@ -1,1 +1,3 @@
 baseurl: /jekyll_demo
+
+excerpt_separator:  '<!-- more -->'

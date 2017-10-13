@@ -6,35 +6,44 @@ title: Moorain
 <!--{% include banner.html %}-->
 <!--内容-->
 <div class="container">
-	<div class="eassy col-md-5" style="padding-left: 20px;height: 400px;overflow: hidden; margin-right: 20px;margin-left: 10px;">
+	<div class="eassy col-md-5" style="height: 600px;overflow: hidden;">
+		<h2>最近记录</h2>
 		<!--<h2>{{ page.title }}</h2>
 		<p>最新记录</p>-->
-		<ul>
-		　　　　{% for post in site.posts %}
-		　　　　　　<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
-		　　　　{% endfor %}
+		<ul style="list-style: none;padding:0 ;">
+	　　　　{% for post in site.posts %}
+	　　　　　　<li>
+					<h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+					<p>{{ post.excerpt | strip_html }}</p>
+					
+					
+					<!--日期--><span>{{ post.date | date_to_string }} </span>
+					
+	
+			</li>
+	　　　　{% endfor %}
 		</ul>
 	</div>
 	<!--个人信息-->
-	<div class="eassy col-md-3" style="margin-right: 20px;margin-left: 10px;text-align: center;">
+	<div class="eassy col-md-3" style="margin-left: 10px;">
+		<h2>文章分类</h2>
+		{% for category in site.categories %}
+		<h3>{{ category | first }}</h3>
+		<!--<span>文章数量：</span></span>{{ category | last | size }}</span>-->
+		<ul class="arc-list" style="list-style: none;">			
+		    {% for post in category.last %}
+		        	<li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a><span id="date">
+		        	{{ post.date | date:"%d/%m/%Y"}}
+		        </span></li>
+		    {% endfor %}
+		</ul>
+		{% endfor %}
+	</div>
+	<!--个人信息-->
+	<div class="eassy col-md-3" style="margin-left: 10px;text-align: center;">
 		<img src="img/header.jpg" width="100px" style="padding-top: 20px;">
 		<p>github</p>
 		<p>新浪微博</p>
 		<p>QQ</p>	
 	</div>
-	<div class="eassy col-md-3" style="margin-right: 20px;margin-left: 10px;">
-			{% for category in site.categories %}
-	<h5>{{ category | first }}</h5>
-<!--<span>文章数量：</span></span>{{ category | last | size }}</span>-->
-<ul class="arc-list" style="list-style: none;">
-    {% for post in category.last %}
-        	<li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a><span id="date">
-        	{{ post.date | date:"%d/%m/%Y"}}
-        </span></li>
-    {% endfor %}
-</ul>
-{% endfor %}
-	</div>
-	
 </div>
-
