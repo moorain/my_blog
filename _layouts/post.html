@@ -13,6 +13,13 @@
 <div class=" feature container" id="content" style="padding: 0;">
 	<div class="col-md-2" id="toc2"></div>
     <div class="col-md-10 " id="easypage" style="padding: 0;">
+    {% if site.leancloud.enable %}
+       <span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }}">
+        <span class="post-meta-divider">|</span>
+        <span class="post-meta-item-text"> Hits:  </span>
+        <span class="leancloud-visitors-count"></span>
+       </span>
+   {% endif %}
 		<div id="easypage-con" style="background: white;line-height: 26px;color: #333;">
 			{{ content }}
 		</div>	
