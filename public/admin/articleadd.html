@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>修改文章</title>
+
+    <script src="../javascripts/jquery.min.js"></script>
+    <script src="../javascripts/template.js"></script>
+    <link rel="stylesheet" href="./css/backadmin.css">
+    
+</head>
+<body>
+    <div class="nav">
+        <ul>
+            <li><a href="../">网站首页</a></li>            
+            <li><a href="./moorain.html">博客管理</a></li>
+            <li><a href="./articleadd.html">添加文章</a></li>
+            <li><a href="./affiche.html">网站公告</a></li>
+            <li><a href="./msg.html">评论管理</a></li>
+            <li><a href="./know_add.html">退出系统</a></li>
+        </ul>
+    </div>
+    <h1 style="position:absolute;left:60px;top:40px;">添加文章</h1>
+    <div class="inputbox">
+        <p>标题:
+            <input type="text" id="name">
+        </p>
+        <p>作者:
+            <input type="text" id="author">
+        </p>
+        <p>时间:
+                <input type="text" id="optime">
+            </p>
+        <p>类别:
+               <select name="kind" id="kind">
+                    <option >HTML-CSS</option>
+                    <option >JavaScript</option>
+                    <option >Nodejs</option>
+                    <option >Others</option>
+               </select>
+        </p>
+        <textarea id="con" cols="120" rows="40"></textarea>
+        <button id="post">提交</button>
+    </div>
+
+    <script>
+     $("#post").click(function () {
+
+            var name = $("#name").val();//标题 
+            var con = $("#con").val();//内容
+            var author = $("#author").val();//作者
+            var kind = $("#kind").val();//类别
+            var optime = $("#optime").val();//时间
+            
+            var datas = {
+                "name": name,
+                "con": con,
+                "author": author,
+                "kind": kind,
+                "optime": optime,
+            }
+            // console.log(datas)
+
+            $.post('/con_save.html', datas, function (err, data) {
+                console.log(data);
+                if (data == "success") {
+                    alert("保存成功")
+                    location.href=('/admin/moorain.html')
+                }
+            })
+        })
+    </script>
+
+</body>
+</html>

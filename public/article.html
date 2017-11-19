@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/nprogress.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<link rel="apple-touch-icon-precomposed" href="images/icon/icon.png">
+<link rel="shortcut icon" href="images/icon/favicon.ico">
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/nprogress.js"></script>
+<script src="js/jquery.lazyload.min.js"></script>
+<script src="./javascripts/template.js"></script>
+<style>
+    #_content{
+        text-align:left;
+    }
+    h3{
+        margin: 10px 0;
+    }
+    #_con{
+    height: 40px;
+    overflow: hidden;
+}
+pre{
+    margin:5px;
+    padding: 5px;
+}
+#msg_name{
+    margin: 5px 0;
+}
+</style>
+</head>
+<body class="user-select single">
+<header class="header">
+    <!-- 导航栏 -->
+<script src="./nav.js"></script>
+</header>
+<section class="container">
+  <div class="content-wrap">
+    <div class="content">
+      <header class="article-header">
+            <h1 class="article-title"><a href="article.html" id="_title"></a></h1>
+            <div class="article-meta"> <span class="item article-meta-time">
+            <time class="time" data-toggle="tooltip" data-placement="bottom"><i class="glyphicon glyphicon-time" id="_optime"></i></time>
+            </span> <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" ><i class="glyphicon glyphicon-globe"></i></span> <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title=""><i class="glyphicon glyphicon-list"></i> <a href="program" title="" id="_kind"></a></span> <span class="item article-meta-views" data-toggle="tooltip" data-placement="bottom" title="查看：120"><i class="glyphicon glyphicon-eye-open"></i> 共120次查看</span> <span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom" title="评论：0"><i class="glyphicon glyphicon-comment"></i> 0个评论</span> </div>
+          </header>
+          <article class="article-content" id="_content">
+                <!-- 文章内容 -->
+          </article>
+      <div class="article-tags">标签：<a href="" rel="tag" id="tags"></a></div>
+      <div class="relates">
+        <div class="title">
+          <h3>相关推荐</h3>
+        </div>
+        <ul id = "_command">
+          <!-- 相关推荐内容 -->
+        </ul>
+      </div>
+      <div class="title" id="comment">
+        <h3>评论 <small>抢沙发</small></h3>
+      </div>
+      <div id="respond">
+        <form action="" method="post" id="comment-form">
+          <div class="comment">
+            <div class="comment-title"><img class="avatar" src="images/icon/icon.png" alt="" /></div>
+            <!-- 评论名称 -->
+            <p><input type="text"  id="msg_name" class="comment-box" placeholder="请输入您的名称" tabindex="1"></p>
+            <!-- 评论内容 -->
+            <div class="comment-box">
+              <textarea placeholder="请输入您的评论..." name="comment" id="comment-textarea" cols="100%" rows="3" tabindex="2" ></textarea>
+              <div class="comment-ctrl"> 
+                <div class="comment-prompt"> <i class="fa fa-spin fa-circle-o-notch"></i> <span class="comment-prompt-text"></span> </div>
+                <input type="hidden" value="1" class="articleid" />
+                <button type="button" name="comment-submit" id="comment-submit" tabindex="3" articleid="1">评论</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div id="postcomments">
+        <ol class="commentlist" id="_msgcon">
+
+        </ol>
+        <!-- <div class="quotes"><span class="disabled">首页</span><span class="disabled">上一页</span><a class="current">1</a><a href="">2</a><span class="disabled">下一页</span><span class="disabled">尾页</span></div> -->
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- sidebar -->
+  <script src="sidebar.js" type="text/javascript" charset="utf-8"></script>
+</section>
+<!-- 底部 -->
+<script src="footer.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/jquery.ias.js"></script> 
+<script src="js/scripts.js"></script> 
+<script src="js/jquery.qqFace.js"></script> 
+<script type="text/javascript">
+</script>
+<!-- 相关推荐模版 -->
+<script type="text/html" id="mylist">
+    {{each list as v i}}
+        <li><a href="article.html?id={{v._id}}">{{v.name}}</a></li>
+    {{/each}}
+</script>
+<!-- 评论区模版 -->
+<script type="text/html" id="msglist">
+    {{each msglist as v i}}
+    <li class="comment-content"><span class="comment-f">#{{v.floor}}</span>
+        <div class="comment-avatar"><img class="avatar" src="images/icon/icon.png" alt="" /></div>
+        <!-- 评论区 -->
+        <div class="comment-main">
+          <p>用户:{{v.name}}<span class="time">{{v.date}}</span><br />
+            {{v.con}}
+        </p>
+        </div>
+      </li>
+      {{/each}}
+</script>
+<script>
+    // 获取id
+    var h = location.href;
+        h = h.split("=")
+        var id = h[1];
+    //文章内容 
+    $.get('/cons.html?id='+id,function(data){
+        $("#_content").html(data.html);
+        $("#_title").html(data.name);
+        $("title").html(data.name);
+        $("#_kind").html(data.kind);
+        $("#tags").html(data.kind);
+        $("#_optime").html(data.optime);
+    })
+    // 相关推荐
+    $.get('/recommend.html?id='+id,function(data){
+       var html = template("mylist",{'list':data})
+        $("#_command").html(html);
+    })
+    // 评论
+$("#comment-submit").on('click',function(){
+    _msg();
+    
+})
+    // 定义保存评论的函数
+    function _msg(){
+        var _date = new Date();
+        var _date = _date.toLocaleString();
+        // console.log(_date)
+        var datas={
+            "name" : $("#msg_name").val(),
+            "con" : $("#comment-textarea").val(),
+            "txt_id" :id,
+            "date":_date
+        }
+        $.post('comment_save.html',datas,function(data){
+            // console.log(data);
+            if(data == '1'){
+                _showmsg();
+            }else{
+                alert("保存失败!")
+            }
+        })
+    }
+    //定义显示评论的函数
+    _showmsg();
+    function _showmsg(){
+        var title =  $("#_title").val();
+        console.log(title);
+        $.get('/show_msg.html?id='+id,function(data){
+            var html = template("msglist",{'msglist':data})
+            $("#_msgcon").html(html);
+        })
+    } 
+</script>
+</body>
+</html>

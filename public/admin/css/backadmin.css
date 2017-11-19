@@ -1,0 +1,95 @@
+/* 菜单样式 */
+
+*{padding: 0;margin: 0}
+/* body{
+    background: #ccc;
+} */
+table {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-collapse: collapse;
+    background:white;
+}
+td,
+th {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+.con{
+    /* background: #eee; */
+    width: 79%;
+    float: right;
+    padding-top:75px;
+    color: gray;
+}
+.nav{
+    /* background: #eee; */
+    width: 20%;
+    float: left;
+    padding-top:120px;
+} 
+.nav ul{
+
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+}
+.nav ul li{
+    width: 100%;
+    list-style: none;
+}
+.nav ul li a{
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    padding: 20px 0;
+    border-bottom: 1px solid #ccc;
+}
+#post{
+    width: 150px;
+    height:30px;
+    display: block;
+    margin: 20px 0;
+}
+.inputbox{
+    width: 79%;
+    background: white;
+    float: right;
+    margin-top:100px;
+}
+
+.nav ul li a{
+    color: grey;
+}
+.nav ul li:hover{
+    background: #eee;
+}
+/* 登录框 */
+#login{
+    width: 400px;
+    margin: 200px auto;
+    color: gray;
+}
+#login p{
+    padding-left:20px; 
+}
+#login input{
+    outline: none;
+    width: 200px;
+    height: 30px;
+}
+#btn{
+    width: 200px;
+    height: 30px;
+    margin: 0 50px;
+}
+
+/* 评论管理  */
+#msgtable{
+   margin-top: 45px;
+   color: gray;
+}
+
+#err{
+    color: red;
+}

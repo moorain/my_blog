@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>后台管理</title>
+    <script src="../javascripts/jquery.min.js"></script>
+    <script src="../javascripts/template.js"></script>
+    <link rel="stylesheet" href="./css/backadmin.css">
+</head>
+<body>
+<div class="nav">
+    <ul>
+            <li><a href="../">网站首页</a></li>            
+            <li><a href="./moorain.html">博客管理</a></li>
+            <li><a href="./articleadd.html">添加文章</a></li>
+            <li><a href="./affiche.html">网站公告</a></li>
+            <li><a href="./msg.html">评论管理</a></li>
+            <li><a href="./know_add.html">退出系统</a></li>
+    </ul>
+</div>
+    <h1 style="position:absolute;left:60px;top:40px;">后台管理</h1>
+    <div class="con">        
+        <!-- 文章列表 -->
+        <div>
+            <h3 style="text-align:center; padding-bottom:20px;">文章列表</h3>
+            <table>
+                <thead>
+                    <th>标题</th>
+                    <th>作者</th>
+                    <th>类别</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </thead>
+                <tbody id="conlist">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script type="text/html" id="mylist">
+        {{each list as v i}}
+        <tr>
+            <td>
+                <a href="/article.html?id={{v._id}}">{{v.name}}</a>
+            </td>
+            <td>{{v.author}}</td>
+            <td>{{v.kind}}</td>
+             <td>{{v.optime}}</td>
+            <td>
+                <a href="./article_edit.html?id={{v._id}}">修改</a> &emsp;
+                <a href="/article_delete.html?id={{v._id}}">删除</a>
+            </td>
+        </tr>
+        {{/each}}
+    </script>
+    <script>
+        // 保存文章
+        $("#post").click(function () {
+            var name = $("#name").val();//标题 
+            var con = $("#con").val();//内容
+            var author = $("#author").val();//作者
+            var kind = $("#kind").val();//类别
+            var optime = $("#optime").val();//时间
+            var datas = {
+                "name": name,
+                "con": con,
+                "author": author,
+                "kind": kind,
+                "optime": optime,
+            }
+            // console.log(datas)
+            $.post('/con_save.html', datas, function (err, data) {
+                // console.log(data);
+                if (data == "success") {
+                    addlist()
+                }
+            })
+        })
+        // 渲染
+        addlist()
+        function addlist() {
+            $.get('/addlist.html', function (data) {
+                var html = template('mylist', {
+                    'list': data
+                })
+                $("#conlist").html(html);
+            })
+        }
+    </script>
+</body>
+
+</html>

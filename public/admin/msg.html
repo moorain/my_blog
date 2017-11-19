@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>评论管理</title>
+    <script src="../javascripts/jquery.min.js"></script>
+    <script src="../javascripts/template.js"></script>
+    <link rel="stylesheet" href="./css/backadmin.css">
+</head>
+<body>
+<div class="nav">
+    <ul>
+            <li><a href="../">网站首页</a></li>            
+            <li><a href="./moorain.html">博客管理</a></li>
+            <li><a href="./articleadd.html">新增文章</a></li>
+            <li><a href="./affiche.html">网站公告</a></li>
+            <li><a href="./msg.html">评论管理</a></li>
+            <li><a href="./know_add.html">退出系统</a></li>
+    </ul>
+</div>
+    <h1 style="position:absolute;left:60px;top:40px;">评论管理</h1>
+<div class="con">
+    <table id="msgtable">
+        <thead>
+            <th>时间</th>
+            <th>昵称</th>
+            <th>内容</th>
+            <th>楼层</th>
+            <th>操作</th>
+        </thead>
+        <tbody id="conlist">
+        </tbody>
+    </table>
+</div>    
+</body>
+<script  type="text/html" id="mylist">
+{{each list as v i}}
+<tr>
+    <td>{{v.date}}</td>
+    <td>{{v.name}}</td>
+    <td>{{v.con}}</td>
+    <td>{{v.floor}}</td>
+    <td><a href="/delete_msg.html?id={{v._id}}">删除</a></td>
+</tr>
+{{/each}}
+</script>
+<script>
+    // 渲染数据
+admin_show_msg()
+function admin_show_msg(){
+    $.get('/admin_show_msg.html',function(data){
+        console.log(data)
+        var html = template('mylist', {'list': data})
+        $("#conlist").html(html);
+    })
+}
+// 删除
+
+</script>
+</html>
