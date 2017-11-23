@@ -5,17 +5,13 @@
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title></title>
+<title> </title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/nprogress.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/nprogress.css"> -->
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"> -->
 <link rel="apple-touch-icon-precomposed" href="images/icon/icon.png">
 <link rel="shortcut icon" href="images/icon/favicon.ico">
-<script src="js/jquery-2.1.4.min.js"></script>
-<script src="js/nprogress.js"></script>
-<script src="js/jquery.lazyload.min.js"></script>
-<script src="./javascripts/template.js"></script>
 <style>
     #_content{
         text-align:left;
@@ -48,7 +44,7 @@ pre{
             <h1 class="article-title"><a href="article.html" id="_title"></a></h1>
             <div class="article-meta"> <span class="item article-meta-time">
             <time class="time" data-toggle="tooltip" data-placement="bottom"><i class="glyphicon glyphicon-time" id="_optime"></i></time>
-            </span> <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" ><i class="glyphicon glyphicon-globe"></i></span> <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title=""><i class="glyphicon glyphicon-list"></i> <a href="program" title="" id="_kind"></a></span> <span class="item article-meta-views" data-toggle="tooltip" data-placement="bottom" title="查看：120"><i class="glyphicon glyphicon-eye-open"></i> 共120次查看</span> <span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom" title="评论：0"><i class="glyphicon glyphicon-comment"></i> 0个评论</span> </div>
+            </span> <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" ></span> <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title=""><i class="glyphicon glyphicon-list"></i> <a href="category.html" title="" id="_kind"></a></span> <span class="item article-meta-views" data-toggle="tooltip" data-placement="bottom" ><i class="glyphicon glyphicon-eye-open"></i> 共 <span id="seenum"></span> 次查看</span> <span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom" ><i class="glyphicon glyphicon-comment"></i><span id="msgnum"></span> 个评论</span> </div>
           </header>
           <article class="article-content" id="_content">
                 <!-- 文章内容 -->
@@ -63,7 +59,7 @@ pre{
         </ul>
       </div>
       <div class="title" id="comment">
-        <h3>评论 <small>抢沙发</small></h3>
+        <h3>评论</h3>
       </div>
       <div id="respond">
         <form action="" method="post" id="comment-form">
@@ -85,25 +81,48 @@ pre{
       </div>
       <div id="postcomments">
         <ol class="commentlist" id="_msgcon">
-
         </ol>
         <!-- <div class="quotes"><span class="disabled">首页</span><span class="disabled">上一页</span><a class="current">1</a><a href="">2</a><span class="disabled">下一页</span><span class="disabled">尾页</span></div> -->
       </div>
     </div>
   </div>
-
-  
   <!-- sidebar -->
   <script src="sidebar.js" type="text/javascript" charset="utf-8"></script>
 </section>
 <!-- 底部 -->
 <script src="footer.js" type="text/javascript" charset="utf-8"></script>
-
+<script src="js/jquery-2.1.4.min.js"></script>
+<!-- <script src="js/nprogress.js"></script> -->
+<!-- <script src="js/jquery.lazyload.min.js"></script> -->
+<script src="./javascripts/template.js"></script>
 <script src="js/bootstrap.min.js"></script> 
-<script src="js/jquery.ias.js"></script> 
+<!-- <script src="js/jquery.ias.js"></script>  -->
 <script src="js/scripts.js"></script> 
-<script src="js/jquery.qqFace.js"></script> 
-<script type="text/javascript">
+<!-- <script type="text/javascript"></script> -->
+<script>
+    (function(){
+   // 获取id
+    var h = location.href;
+        h = h.split("=")
+        var id = h[1];
+        //文章内容 
+        $.get('/cons.html?id='+id,function(data){
+            // console.log(data);
+            $("#_content").html(data.html);
+            $("#_title").html(data.name);
+            $("title").html(data.name);
+            $("#_kind").html(data.kind);
+            $("#tags").html(data.kind);
+            $("#_optime").html(data.optime);
+            $("#seenum").html(data.seenum)
+            // console.log(data.msgnum)
+            if(data.msgnum){
+                $("#msgnum").html(data.msgnum);
+            }else{
+                $("#msgnum").html("0");
+            }
+        })
+    })() 
 </script>
 <!-- 相关推荐模版 -->
 <script type="text/html" id="mylist">
@@ -130,25 +149,15 @@ pre{
     var h = location.href;
         h = h.split("=")
         var id = h[1];
-    //文章内容 
-    $.get('/cons.html?id='+id,function(data){
-        $("#_content").html(data.html);
-        $("#_title").html(data.name);
-        $("title").html(data.name);
-        $("#_kind").html(data.kind);
-        $("#tags").html(data.kind);
-        $("#_optime").html(data.optime);
-    })
     // 相关推荐
     $.get('/recommend.html?id='+id,function(data){
-       var html = template("mylist",{'list':data})
+        var html = template("mylist",{'list':data})
         $("#_command").html(html);
     })
     // 评论
-$("#comment-submit").on('click',function(){
-    _msg();
-    
-})
+    $("#comment-submit").on('click',function(){
+        _msg();
+    })
     // 定义保存评论的函数
     function _msg(){
         var _date = new Date();
@@ -170,7 +179,6 @@ $("#comment-submit").on('click',function(){
         })
     }
     //定义显示评论的函数
-    _showmsg();
     function _showmsg(){
         var title =  $("#_title").val();
         console.log(title);
@@ -178,7 +186,8 @@ $("#comment-submit").on('click',function(){
             var html = template("msglist",{'msglist':data})
             $("#_msgcon").html(html);
         })
-    } 
+    }
+    _showmsg();
 </script>
 </body>
 </html>

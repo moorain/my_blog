@@ -21,13 +21,18 @@ var text = '<nav class="navbar navbar-default" id="navbar">\
   </div>\
   <div class="collapse navbar-collapse" id="header-navbar">\
     <ul class="nav navbar-nav navbar-left">\
-      <li class = "hidden-index "><a data-cont="首页" href="index.html">博客首页</a></li>\
-      <li class = "active"><a href="category.html">前端技术</a></li>\
+      <li class = ""><a data-cont="首页" href="index.html">博客首页</a></li>\
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" rel="nofollow">前端技术 <span class="caret"></span></a>\
+      <ul class="dropdown-menu header-topbar-dropdown-menu">\
+        <li><a href="category.html">文章列表</a></li>\
+        <li><a href="###">我的分享</a></li>\
+      </ul>\
+    </li>\
       <li><a href="category.html">关于我</a></li>\
       <li><a href="/admin/login.html">后台管理</a></li>\
     </ul>\
     <!-- 搜索栏 -->\
-    <form class="navbar-form visible-xs" action="/Search" method="post">\
+    <form class="navbar-form visible-xs" action="/search_result.html" method="get">\
       <div class="input-group">\
         <input type="text" name="keyword" class="form-control" placeholder="请输入关键字" maxlength="20" autocomplete="off">\
         <span class="input-group-btn">\

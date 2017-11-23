@@ -1,9 +1,7 @@
 /* 菜单样式 */
 
 *{padding: 0;margin: 0}
-/* body{
-    background: #ccc;
-} */
+
 table {
     width: 100%;
     padding: 0;
@@ -24,7 +22,7 @@ th {
     color: gray;
 }
 .nav{
-    /* background: #eee; */
+    background: #eee;
     width: 20%;
     float: left;
     padding-top:120px;

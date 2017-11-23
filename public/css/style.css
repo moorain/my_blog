@@ -11,8 +11,6 @@
     position: relative;
 }
 #everyday p{
-    /* width: 60%; */
-    /* float: left; */
     padding: 0 5px;
     margin: 20px;
 }
@@ -650,18 +648,11 @@ color:#FFF;
 }
 .excerpt .thumb {
 	border-radius: 5px;
-	width: 220px;
-	height: 150px;
+	height: 100px;
 	overflow: hidden;
 }
 .excerpt img {
 	display: inline;
-}
-.excerpt .focus:hover {
-	-webkit-transform: scale(1.05);
-	transform: scale(1.05);
-	-webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
-	transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
 }
 .excerpt header {
 	margin-bottom: 10px;

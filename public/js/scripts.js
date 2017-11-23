@@ -1,52 +1,4 @@
-//当浏览器窗口大小改变时重载网页
-// window.onresize=function(){
-//     window.location.reload();
-// }
- 
-//页面加载
-// $('body').show();
-// $('.version').text(NProgress.version);
-// NProgress.start();
-// setTimeout(function () {
-//     NProgress.done();
-//     $('.fade').removeClass('out');
-// }, 1000);
 
-//页面加载时给img和a标签添加draggable属性
-// (function () {
-//     $('img').attr('draggable', 'false');
-//     $('a').attr('draggable', 'false');
-// })();
- 
-//设置Cookie
-// function setCookie(name, value, time) {
-//     var strsec = getsec(time);
-//     var exp = new Date();
-//     exp.setTime(exp.getTime() + strsec * 1);
-//     document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
-// }
-function getsec(str) {
-    var str1 = str.substring(1, str.length) * 1;
-    var str2 = str.substring(0, 1);
-    if (str2 == "s") {
-        return str1 * 1000;
-    } else if (str2 == "h") {
-        return str1 * 60 * 60 * 1000;
-    } else if (str2 == "d") {
-        return str1 * 24 * 60 * 60 * 1000;
-    }
-}
- 
-//获取Cookie
-// function getCookie(name) {
-//     var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-//     if (arr = document.cookie.match(reg)) {
-//         return unescape(arr[2]);
-//     } else {
-//         return null;
-//     }
-// }
- 
 //导航智能定位
 $.fn.navSmartFloat = function () {
     var position = function (element) {
@@ -79,7 +31,6 @@ $.fn.navSmartFloat = function () {
         position($(this));
     });
 };
- 
 //启用导航定位
 $("#navbar").navSmartFloat();
  
@@ -97,46 +48,6 @@ $("#gotop").click(function () {
         'scrollTop': 0
     }, 500);
 });
- 
-//图片延时加载
-/* $("img.thumb").lazyload({
-    placeholder: "/Home/images/occupying.png",
-    effect: "fadeIn"
-});
-$(".single .content img").lazyload({
-    placeholder: "/Home/images/occupying.png",
-    effect: "fadeIn"
-}); */
- 
-//IE6-9禁止用户选中文本
-document.body.onselectstart = document.body.ondrag = function () {
-    return false;
-};
- 
-//启用工具提示
-$('[data-toggle="tooltip"]').tooltip();
- 
- 
-//无限滚动反翻页
-/* jQuery.ias({
-	history: false,
-	container : '.content',
-	item: '.excerpt',
-	pagination: '.pagination',
-	next: '.next-page a',
-	trigger: '查看更多',
-	loader: '<div class="pagination-loading"><img src="/Home/images/loading.gif" /></div>',
-	triggerPageThreshold: 5,
-	onRenderComplete: function() {
-		$('.excerpt .thumb').lazyload({
-			placeholder: '/Home/images/occupying.png',
-			threshold: 400
-		});
-		$('.excerpt img').attr('draggable','false');
-		$('.excerpt a').attr('draggable','false');
-	}
-});
-  */
 //鼠标滚动超出侧边栏高度绝对定位
 $(window).scroll(function () {
     var sidebar = $('.sidebar');
