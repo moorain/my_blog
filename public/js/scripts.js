@@ -48,12 +48,12 @@ $("#gotop").click(function () {
         'scrollTop': 0
     }, 500);
 });
-//鼠标滚动超出侧边栏高度绝对定位
+//首頁鼠标滚动超出侧边栏高度绝对定位
 $(window).scroll(function () {
     var sidebar = $('.sidebar');
     var sidebarHeight = sidebar.height();
     var windowScrollTop = $(window).scrollTop();
-    if (windowScrollTop > sidebarHeight - 60 && sidebar.length) {
+    if (windowScrollTop >=260 && sidebar.length) {
         $('.fixed').css({
             'position': 'fixed',
             'top': '70px',
@@ -63,5 +63,23 @@ $(window).scroll(function () {
         $('.fixed').removeAttr("style");
     }
 });
+
+// 文章右侧
+
+$(window).scroll(function () {
+    var sidebar = $('.sidebar');
+    var sidebarHeight = sidebar.height();
+    var windowScrollTop = $(window).scrollTop();
+    if (windowScrollTop >0 && sidebar.length) {
+        $('.fixed-circle').css({
+            'position': 'fixed',
+            'top': '70px',
+            'width': '360px'
+        });
+    } else {
+        $('.fixed-circle').removeAttr("style");
+    }
+});
+// console.log($(".content-wrap").position().top)
 
 

@@ -5,7 +5,7 @@
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title> </title>
+<title></title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <!-- <link rel="stylesheet" type="text/css" href="css/nprogress.css"> -->
 <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -13,7 +13,6 @@
 <link rel="apple-touch-icon-precomposed" href="images/icon/icon.png">
 <link rel="shortcut icon" href="images/icon/favicon.ico">
 <script src="./javascripts/baidutj.js"></script>
-
 <style>
     #_content{
         text-align:left;
@@ -43,10 +42,10 @@ pre{
   <div class="content-wrap">
     <div class="content">
       <header class="article-header">
-            <h1 class="article-title"><a href="article.html" id="_title"></a></h1>
+            <h1 class="article-title" id="_title"></h1>
             <div class="article-meta"> <span class="item article-meta-time">
             <time class="time" data-toggle="tooltip" data-placement="bottom"><i class="glyphicon glyphicon-time" id="_optime"></i></time>
-            </span> <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" ></span> <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title=""><i class="glyphicon glyphicon-list"></i> <a href="category.html" title="" id="_kind"></a></span> <span class="item article-meta-views" data-toggle="tooltip" data-placement="bottom" ><i class="glyphicon glyphicon-eye-open"></i> 共 <span id="seenum"></span> 次查看</span> <span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom" ><i class="glyphicon glyphicon-comment"></i><span id="msgnum"></span> 个评论</span> </div>
+            </span> <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" ></span> <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title=""><i class="glyphicon glyphicon-list"></i> <a href="category.html" title="" id="_kind"></a></span> <span class="item article-meta-views" data-toggle="tooltip" data-placement="bottom" ><i class="glyphicon glyphicon-eye-open"></i> &nbsp;共 <span id="seenum"></span> 次查看</span> <span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom" ><i class="glyphicon glyphicon-comment"></i>&nbsp;<span id="msgnum"></span> 个评论</span> </div>
           </header>
           <article class="article-content" id="_content">
                 <!-- 文章内容 -->
@@ -89,7 +88,13 @@ pre{
     </div>
   </div>
   <!-- sidebar -->
-  <script src="sidebar.js" type="text/javascript" charset="utf-8"></script>
+  <aside class="sidebar">
+        <div class="fixed-circle">
+            <div class="widget widget_hot">
+                    <h3>目录</h3>
+            </div>
+        </div>
+      </aside>
 </section>
 <!-- 底部 -->
 <script src="footer.js" type="text/javascript" charset="utf-8"></script>
@@ -112,7 +117,7 @@ pre{
             // console.log(data);
             $("#_content").html(data.html);
             $("#_title").html(data.name);
-            $("title").html(data.name);
+            $("title").html(data.name+"--屈鑫的个人博客");
             $("#_kind").html(data.kind);
             $("#tags").html(data.kind);
             $("#_optime").html(data.optime);

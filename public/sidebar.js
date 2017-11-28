@@ -29,14 +29,6 @@ var text = '<aside class="sidebar">\
         </form>\
       </div>\
     </div>\
-    <div class="widget widget_sentence">\
-      <h3>最近杂谈</h3>\
-      <div class="widget-sentence-content">\
-        <h4>2016年01月05日星期二</h4>\
-        <p>Do not let what you cannot do interfere with what you can do.<br />\
-          别让你不能做的事妨碍到你能做的事。（John Wooden）</p>\
-      </div>\
-    </div>\
   </aside>';
 
 document.write(text)

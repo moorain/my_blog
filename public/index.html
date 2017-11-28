@@ -6,6 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Moorain-屈鑫的个人博客-前端</title>
+
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="apple-touch-icon-precomposed" href="images/icon/icon.png">
@@ -72,14 +73,16 @@
 <!-- 定义模版 -->
 <script id="mylist" type="text/html">
     {{each list as v i}}
-    <article class="excerpt excerpt-1"><a class="focus" href="article.html?id={{v._id}}" title=""><img class="thumb" data-original="images/excerpt.jpg" src="images/{{v.kind}}.jpg" alt=""></a>
-        <header><a class="cat" href="program">{{v.kind}}<i></i></a>
+    <article class="excerpt excerpt-1">
+        <!-- <a class="focus" href="article.html?id={{v._id}}" title=""><img class="thumb" data-original="images/excerpt.jpg" src="images/{{v.kind}}.jpg" alt=""></a> -->
+        <header>
+            <!-- <a class="cat" href="program">{{v.kind}}<i></i></a> -->
           <h2><a href="article.html?id={{v._id}}" title="">{{v.name}}</a></h2>
         </header>
         <p class="meta">
-          <time class="time"><i class="glyphicon glyphicon-time"></i>{{v.optime}}</time>
-          <span class="views"><i class="glyphicon glyphicon-eye-open"></i>{{v.seenum}}</span> <i class="glyphicon glyphicon-comment"></i>{{v.msgnum}}评论</p>
-        <p class="note" id="_con">{{v.con}}</p>
+          <time class="time"><i class="glyphicon glyphicon-time"></i> &nbsp;{{v.optime}}</time>
+          <span class="views"><i class="glyphicon glyphicon-eye-open"></i> &nbsp;{{v.seenum}}</span> <i class="glyphicon glyphicon-comment"></i>&nbsp; {{v.msgnum}}评论</p>
+            <p class="note" id="_con">{{v.con}}</p>
       </article>
       {{/each}}
 </script>

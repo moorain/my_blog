@@ -29,7 +29,6 @@ var text = '<nav class="navbar navbar-default" id="navbar">\
       </ul>\
     </li>\
       <li><a href="category.html">关于我</a></li>\
-      <li><a href="/admin/login.html">后台管理</a></li>\
     </ul>\
     <!-- 搜索栏 -->\
     <form class="navbar-form visible-xs" action="/search_result.html" method="get">\
