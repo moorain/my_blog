@@ -1,5 +1,3 @@
-
-
 var express = require('express');
 var router = express.Router();
 var markdown = require('markdown-js'); 
@@ -19,26 +17,23 @@ var textSchema = new mongoose.Schema({
 // 发布模型
 var txtModel= mongoose.model('con',textSchema,'con');
 
-router.get('/markdown', function(req, res) {  
+/* router.get('/markdown', function(req, res) {  
     res.render('index.md',{layout:true});
  })
 
 router.get('/mark.html',function(req,res){
     var html1 = markdown.makeHtml("[Java Eye](http://www.iteye.com/ \"Click\") ");  
-    res.send(html1)  
-    
-  })
-
-
+    res.send(html1)
+  }) */
 // 查询数据
-router.get('/mktxt.html',function(req,res){
+/* router.get('/mktxt.html',function(req,res){
     txtModel.find({"name":"333"}).exec(function(err,data){
         console.log(data)
         var html = markdown.makeHtml(data[0].con);  
         res.send(html)  
-    })
+    }) */
 // 存储数据
-})
+// })
 
 router.post('/con_save.html',function(req,res){
     var name = req.body.name;
@@ -75,7 +70,7 @@ router.get('/addlist.html',function(req,res){
 // post页面渲染
 router.get('/cons.html',function(req,res){
     var id = req.query.id;
- 
+    if(id != ""){
     txtModel.findById(id,function(err,data){
         //对象保存给that 避免冲突
         var that = data;
@@ -101,11 +96,13 @@ router.get('/cons.html',function(req,res){
                 if(err){
                     throw err;
                 }else{
-                // console.log(seenum,_msgnum);
                 }
             })
         }) 
     })
+    }else{
+        redirect("/index.html")
+    }
 })
 
 // 删除

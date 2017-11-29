@@ -12,6 +12,10 @@
 <!-- <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"> -->
 <link rel="apple-touch-icon-precomposed" href="images/icon/icon.png">
 <link rel="shortcut icon" href="images/icon/favicon.ico">
+<script src="js/jquery-2.1.4.min.js"></script>
+<!-- <script src="js/nprogress.js"></script> -->
+<!-- <script src="js/jquery.lazyload.min.js"></script> -->
+<script src="./javascripts/template.js"></script>
 <script src="./javascripts/baidutj.js"></script>
 <style>
     #_content{
@@ -50,7 +54,36 @@ pre{
           <article class="article-content" id="_content">
                 <!-- 文章内容 -->
           </article>
-      <div class="article-tags">标签：<a href="" rel="tag" id="tags"></a></div>
+        <div class="article-tags">标签：<a href="" rel="tag" id="tags"></a></div>
+        <!-- 添加内容 -->
+        <script>
+        (function(){
+        // 获取id
+        var h = location.href;
+            h = h.split("=")
+            var id = h[1];
+            //文章内容 
+            if(id){
+                $.get('/cons.html?id='+id,function(data){
+                    // console.log(data);
+                    $("#_content").html(data.html);
+                    $("#_title").html(data.name);
+                    $("title").html(data.name+"--屈鑫的个人博客");
+                    $("#_kind").html(data.kind);
+                    $("#tags").html(data.kind);
+                    $("#_optime").html(data.optime);
+                    $("#seenum").html(data.seenum)
+                    // console.log(data.msgnum)
+                    if(data.msgnum){
+                        $("#msgnum").html(data.msgnum);
+                    }else{
+                        $("#msgnum").html("0");
+                    }
+                })
+            }
+        })() 
+    </script>
+    
       <div class="relates">
         <div class="title">
           <h3>相关推荐</h3>
@@ -98,39 +131,12 @@ pre{
 </section>
 <!-- 底部 -->
 <script src="footer.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/jquery-2.1.4.min.js"></script>
-<!-- <script src="js/nprogress.js"></script> -->
-<!-- <script src="js/jquery.lazyload.min.js"></script> -->
-<script src="./javascripts/template.js"></script>
+
 <script src="js/bootstrap.min.js"></script> 
 <!-- <script src="js/jquery.ias.js"></script>  -->
 <script src="js/scripts.js"></script> 
 <!-- <script type="text/javascript"></script> -->
-<script>
-    (function(){
-   // 获取id
-    var h = location.href;
-        h = h.split("=")
-        var id = h[1];
-        //文章内容 
-        $.get('/cons.html?id='+id,function(data){
-            // console.log(data);
-            $("#_content").html(data.html);
-            $("#_title").html(data.name);
-            $("title").html(data.name+"--屈鑫的个人博客");
-            $("#_kind").html(data.kind);
-            $("#tags").html(data.kind);
-            $("#_optime").html(data.optime);
-            $("#seenum").html(data.seenum)
-            // console.log(data.msgnum)
-            if(data.msgnum){
-                $("#msgnum").html(data.msgnum);
-            }else{
-                $("#msgnum").html("0");
-            }
-        })
-    })() 
-</script>
+
 <!-- 相关推荐模版 -->
 <script type="text/html" id="mylist">
     {{each list as v i}}
@@ -157,14 +163,16 @@ pre{
         h = h.split("=")
         var id = h[1];
     // 相关推荐
-    $.get('/recommend.html?id='+id,function(data){
-        var html = template("mylist",{'list':data})
-        $("#_command").html(html);
-    })
-    // 评论
-    $("#comment-submit").on('click',function(){
-        _msg();
-    })
+    if(id){
+        $.get('/recommend.html?id='+id,function(data){
+            var html = template("mylist",{'list':data})
+            $("#_command").html(html);
+        })
+        // 评论
+        $("#comment-submit").on('click',function(){
+            _msg();
+        })
+    }
     // 定义保存评论的函数
     function _msg(){
         var _date = new Date();
@@ -194,7 +202,13 @@ pre{
             $("#_msgcon").html(html);
         })
     }
-    _showmsg();
+
+    if(id){
+        _showmsg();
+    }else{
+        location.href=("/index.html");
+    }
+    
 </script>
 </body>
 </html>
