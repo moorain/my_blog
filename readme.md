@@ -1,4 +1,4 @@
 ﻿## 欢迎访问! ##
-my blog v2.5 欢迎你!
-
+my blog v3.0.1 欢迎你!
+博客地址：
 http://www.moorain.xin
