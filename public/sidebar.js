@@ -1,5 +1,14 @@
 var text = '<aside class="sidebar">\
     <div class="fixed">\
+    <div class="widget widget_search">\
+    <form class="navbar-form" action="/search_result.html" method="get">\
+      <div class="input-group">\
+        <input type="text" name="keyword" class="form-control"  size="35" placeholder="请输入关键字" maxlength="15" autocomplete="off">\
+        <span class="input-group-btn">\
+        <button class="btn  btn-search" type="submit"><span class="glyphicon glyphicon-search"></span></button>\
+        </span> </div>\
+    </form>\
+  </div>\
       <div class="widget widget-tabs">\
         <ul class="nav nav-tabs" role="tablist">\
           <li role="presentation" class="active"><a href="#notice" aria-controls="notice" role="tab" data-toggle="tab">网站公告</a></li>\
@@ -19,16 +28,6 @@ var text = '<aside class="sidebar">\
           </div>\
         </div>\
       </div>\
-      <div class="widget widget_search">\
-        <form class="navbar-form" action="/search_result.html" method="get">\
-          <div class="input-group">\
-            <input type="text" name="keyword" class="form-control"  size="35" placeholder="请输入关键字" maxlength="15" autocomplete="off">\
-            <span class="input-group-btn">\
-            <button class="btn btn-default btn-search"  type="submit">搜索</button>\
-            </span> </div>\
-        </form>\
-      </div>\
     </div>\
   </aside>';
-
 document.write(text)

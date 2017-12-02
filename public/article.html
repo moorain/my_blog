@@ -7,16 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title></title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<!-- <link rel="stylesheet" type="text/css" href="css/nprogress.css"> -->
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<!-- <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"> -->
 <link rel="apple-touch-icon-precomposed" href="images/icon/icon.png">
 <link rel="shortcut icon" href="images/icon/favicon.ico">
-<script src="js/jquery-2.1.4.min.js"></script>
-<!-- <script src="js/nprogress.js"></script> -->
-<!-- <script src="js/jquery.lazyload.min.js"></script> -->
-<script src="./javascripts/template.js"></script>
-<script src="./javascripts/baidutj.js"></script>
+<!-- <script src="./javascripts/baidutj.js"></script> -->
 <style>
     #_content{
         text-align:left;
@@ -34,6 +28,22 @@ pre{
 }
 #msg_name{
     margin: 5px 0;
+}
+.sidebar{
+    
+}
+.sidebar .list-title{
+    font-size: 20px;
+    padding:20px 10px 30px 20px;    
+}
+.sidebar .article-list>li{
+    cursor: pointer;
+        padding: 10px;
+        padding-left: 20px;
+        /* border-bottom: 1px solid #eee; */
+}
+.sidebar .article-list>li:hover{
+    background-color: #eaeaea;
 }
 </style>
 </head>
@@ -56,33 +66,7 @@ pre{
           </article>
         <div class="article-tags">标签：<a href="" rel="tag" id="tags"></a></div>
         <!-- 添加内容 -->
-        <script>
-        (function(){
-        // 获取id
-        var h = location.href;
-            h = h.split("=")
-            var id = h[1];
-            //文章内容 
-            if(id){
-                $.get('/cons.html?id='+id,function(data){
-                    // console.log(data);
-                    $("#_content").html(data.html);
-                    $("#_title").html(data.name);
-                    $("title").html(data.name+"--屈鑫的个人博客");
-                    $("#_kind").html(data.kind);
-                    $("#tags").html(data.kind);
-                    $("#_optime").html(data.optime);
-                    $("#seenum").html(data.seenum)
-                    // console.log(data.msgnum)
-                    if(data.msgnum){
-                        $("#msgnum").html(data.msgnum);
-                    }else{
-                        $("#msgnum").html("0");
-                    }
-                })
-            }
-        })() 
-    </script>
+       
     
       <div class="relates">
         <div class="title">
@@ -116,7 +100,6 @@ pre{
       <div id="postcomments">
         <ol class="commentlist" id="_msgcon">
         </ol>
-        <!-- <div class="quotes"><span class="disabled">首页</span><span class="disabled">上一页</span><a class="current">1</a><a href="">2</a><span class="disabled">下一页</span><span class="disabled">尾页</span></div> -->
       </div>
     </div>
   </div>
@@ -124,26 +107,27 @@ pre{
   <aside class="sidebar">
         <div class="fixed-circle">
             <div class="widget widget_hot">
-                    <h3>目录</h3>
+                <p class="list-title">目录</p>
+                <ul class="article-list"></ul>
             </div>
         </div>
       </aside>
 </section>
 <!-- 底部 -->
 <script src="footer.js" type="text/javascript" charset="utf-8"></script>
-
+<script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/bootstrap.min.js"></script> 
-<!-- <script src="js/jquery.ias.js"></script>  -->
-<script src="js/scripts.js"></script> 
-<!-- <script type="text/javascript"></script> -->
+<script src="js/scripts.js"></script>
 
-<!-- 相关推荐模版 -->
+<script src="./javascripts/template.js"></script>
+
+<!-- 更多推荐模版 -->
 <script type="text/html" id="mylist">
     {{each list as v i}}
         <li><a href="article.html?id={{v._id}}">{{v.name}}</a></li>
     {{/each}}
 </script>
-<!-- 评论区模版 -->
+<!-- 显示评论模版 -->
 <script type="text/html" id="msglist">
     {{each msglist as v i}}
     <li class="comment-content"><span class="comment-f">#{{v.floor}}</span>
@@ -157,58 +141,6 @@ pre{
       </li>
       {{/each}}
 </script>
-<script>
-    // 获取id
-    var h = location.href;
-        h = h.split("=")
-        var id = h[1];
-    // 相关推荐
-    if(id){
-        $.get('/recommend.html?id='+id,function(data){
-            var html = template("mylist",{'list':data})
-            $("#_command").html(html);
-        })
-        // 评论
-        $("#comment-submit").on('click',function(){
-            _msg();
-        })
-    }
-    // 定义保存评论的函数
-    function _msg(){
-        var _date = new Date();
-        var _date = _date.toLocaleString();
-        // console.log(_date)
-        var datas={
-            "name" : $("#msg_name").val(),
-            "con" : $("#comment-textarea").val(),
-            "txt_id" :id,
-            "date":_date
-        }
-        $.post('comment_save.html',datas,function(data){
-            // console.log(data);
-            if(data == '1'){
-                _showmsg();
-            }else{
-                alert("保存失败!")
-            }
-        })
-    }
-    //定义显示评论的函数
-    function _showmsg(){
-        var title =  $("#_title").val();
-        console.log(title);
-        $.get('/show_msg.html?id='+id,function(data){
-            var html = template("msglist",{'msglist':data})
-            $("#_msgcon").html(html);
-        })
-    }
-
-    if(id){
-        _showmsg();
-    }else{
-        location.href=("/index.html");
-    }
-    
-</script>
+<script src="./javascripts/article.js" type="text/javascript"></script>
 </body>
 </html>

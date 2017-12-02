@@ -37,25 +37,28 @@
                 <img src="./images/welcome.png" width="500px" alt="">
                 <h3>欢迎来到我的博客...</h3>
         </div>
-    </div>
+    </div> 
   <div class="content-wrap">
     <div class="content">
-    <article class="excerpt-minic excerpt-minic-index" id="everyday" style = "padding:0">
-        <div class=" col-md-4" style="padding:4px;"><img id="cibapoto" alt="每日一句" ></div>
-        <div class=" col-md-8" ><p  id="content"></p>
+     <article class="excerpt-minic excerpt-minic-index" id="everyday" style = "padding:0">
+        <!-- <div class=" col-md-4" style="padding:4px;"><img id="cibapoto" alt="每日一句" ></div> -->
+        <div class="col-md-12" ><p  id="content"></p>
             <p id="chcontent"></p>
-            <p  class="note _timenote" style="color:#999;"> <span>每日一句:</span>&emsp;<span id="dateline"></span></p>
+            <!-- <p  class="note _timenote" style="color:#999;"> <span>每日一句:</span>&emsp;<span id="dateline"></span></p> -->
         </div>
-    </article>
-      <div class="title">
-        <h3>最近记录</h3>
+        <div>
+            <span id="cibaauthor"></span>
+        </div>
+    </article> 
+<!--      <div class="title">
+        <h3>最近记录</h3> 
         <div class="more" id="kind_nav">
             <a href="javascript:" >HTML-CSS</a>
             <a href="javascript:" >JavaScript</a>
             <a href="javascript:" >Nodejs</a>
             <a href="javascript:" >Others</a>
         </div>
-      </div>
+      </div> -->
     <div id="conlist">
         <!-- 内容区 -->
     </div>
@@ -97,6 +100,7 @@
         })
     }
     // kind分类
+/*     
     var kindlist = $("#kind_nav").find("a")
     // console.log(kindlist);
     for(var i = 0; i<kindlist.length;i++){
@@ -108,15 +112,15 @@
                 $("#conlist").html(html);
             })
         })
-    }
+    } */
 </script>
 <!--每日一句 -->
 <script type="text/javascript">  
     function jsonpCallback(data) {  
-        $("#cibapoto").prop("src",data.picture)
+        // $("#cibapoto").prop("src",data.picture)
         $("#content").html(data.content);
         $("#chcontent").html(data.note)
-        $("#dateline").html(data.dateline)
+        $("#cibaauthor").html("金山词霸每日一句"+data.dateline)
         console.log(data.note+"--------每日一句")
         console.log("欢迎光临我的博客!")
     }
