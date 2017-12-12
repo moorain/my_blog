@@ -25,10 +25,10 @@ var text = '<nav class="navbar navbar-default" id="navbar">\
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" rel="nofollow">前端技术 <span class="caret"></span></a>\
       <ul class="dropdown-menu header-topbar-dropdown-menu">\
         <li><a href="category.html">文章列表</a></li>\
-        <li><a href="share.html">我的分享</a></li>\
+        <li><a href="./myshare.html">我的分享</a></li>\
       </ul>\
     </li>\
-      <li><a href="category.html">关于我</a></li>\
+      <li><a href="about.html">关于</a></li>\
     </ul>\
     <!-- 搜索栏 -->\
     <form class="navbar-form visible-xs" action="/search_result.html" method="get">\

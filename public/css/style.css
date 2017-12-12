@@ -660,11 +660,12 @@ color:#FFF;
 	display: inline;
 	font-size: 22px;
 	line-height: 24px;
-	margin-top: 0;
+	/* margin-top: 0; */
 	font-weight: bold;
 }
 .excerpt h2 a {
-	color: #555;
+    color: #555;
+    font-weight: normal;
 }
 .excerpt h2 a:hover {
 	color: #3399CC;

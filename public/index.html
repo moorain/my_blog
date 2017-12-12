@@ -24,6 +24,7 @@
   <script>window.location.href='upgrade-browser.html';</script>
 <![endif]-->
 <style>
+
 </style>
 </head>
 <body class="user-select">
@@ -117,12 +118,11 @@
 <!--每日一句 -->
 <script type="text/javascript">  
     function jsonpCallback(data) {  
-        // $("#cibapoto").prop("src",data.picture)
         $("#content").html(data.content);
         $("#chcontent").html(data.note)
-        $("#cibaauthor").html("金山词霸每日一句"+data.dateline)
+        $("#cibaauthor").html("每日一句 &nbsp;"+data.dateline)
         console.log(data.note+"--------每日一句")
-        console.log("欢迎光临我的博客!")
+        console.log("欢迎光临我的博客! ")
     }
 </script>
 <script type="text/javascript" src="http://open.iciba.com/dsapi?callback=jsonpCallback"></script> 

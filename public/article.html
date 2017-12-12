@@ -11,6 +11,7 @@
 <link rel="apple-touch-icon-precomposed" href="images/icon/icon.png">
 <link rel="shortcut icon" href="images/icon/favicon.ico">
 <!-- <script src="./javascripts/baidutj.js"></script> -->
+
 <style>
     #_content{
         text-align:left;
@@ -47,14 +48,14 @@ pre{
 }
 </style>
 </head>
-<body class="user-select single">
+<body class="user-select single" style="display:none;">
 <header class="header">
     <!-- 导航栏 -->
 <script src="./nav.js"></script>
 </header>
 <section class="container">
   <div class="content-wrap">
-    <div class="content">
+    <div class="content" >
       <header class="article-header">
             <h1 class="article-title" id="_title"></h1>
             <div class="article-meta"> <span class="item article-meta-time">
@@ -118,8 +119,8 @@ pre{
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/bootstrap.min.js"></script> 
 <script src="js/scripts.js"></script>
-
 <script src="./javascripts/template.js"></script>
+<script src="./javascripts/article.js" type="text/javascript"></script>
 
 <!-- 更多推荐模版 -->
 <script type="text/html" id="mylist">
@@ -141,6 +142,5 @@ pre{
       </li>
       {{/each}}
 </script>
-<script src="./javascripts/article.js" type="text/javascript"></script>
 </body>
 </html>
