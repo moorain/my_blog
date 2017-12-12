@@ -1,4 +1,4 @@
-// 渲染文章
+// $(".content").hide();
 // 获取id
 var h = location.href;
 h = h.split("=");
@@ -7,7 +7,6 @@ var id = h[1];
   //文章内容
   if (id) {
     $.get("/cons.html?id=" + id, function(data) {
-      // console.log(data);
       $("#_content").html(data.html);
       $("#_title").html(data.name);
       $("title").html(data.name + "--屈鑫的个人博客");
@@ -23,9 +22,9 @@ var id = h[1];
       }
       add_artcle_list();
     });
-   
   }
 })();
+$("body").show();
 // 相关推荐
 if (id) {
   $.get("/recommend.html?id=" + id, function(data) {
