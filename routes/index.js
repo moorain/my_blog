@@ -241,13 +241,13 @@ router.get('/delete_msg.html',function(req,res){
     })
 })
 
-
-
 /* GET home page. */
 // ejs渲染主页
 router.get('/', function(req, res, next) {
     txtModel.find({}).sort({"optime":-1}).limit(8).exec(function(err,data){
-        console.log(data[0]);
+       /*  for(var i = 0;i<data.length;i++){
+            data[i].con = markdown.makeHtml(data[i].con);
+        } */
         res.render('index', {
             datas:data
         });
@@ -257,7 +257,7 @@ router.get('/', function(req, res, next) {
 // ejs渲染文章
 router.get('/article.html',function(req,res){
     var id = req.query.id;
-    if(id != ""){
+    if(id){
     txtModel.findById(id,function(err,data){
         //对象保存给that 避免冲突
         var that = data;
@@ -281,8 +281,6 @@ router.get('/article.html',function(req,res){
             res.render('article', {
                 eassydata:datas
             });
-
-
             // 保存浏览数和评论数到文章数据库中
             that.msgnum = _msgnum;
             that.seenum = seenum;
@@ -295,7 +293,7 @@ router.get('/article.html',function(req,res){
         }) 
     })
     }else{
-        redirect("/index.html")
+        redirect("./")
     }
 })
 
