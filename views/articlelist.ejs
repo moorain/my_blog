@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moorain-我的记录</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/nprogress.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<link rel="apple-touch-icon-precomposed" href="images/icon/icon.png">
+<link rel="shortcut icon" href="images/icon/favicon.ico">
+<script src="./javascripts/baidutj.js"></script>
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="./javascripts/template.js"></script>
+<!-- <script src="js/nprogress.js"></script> -->
+<!-- <script src="js/jquery.lazyload.min.js"></script> -->
+<!--[if gte IE 9]>
+  <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+  <script src="js/html5shiv.min.js" type="text/javascript"></script>
+  <script src="js/respond.min.js" type="text/javascript"></script>
+  <script src="js/selectivizr-min.js" type="text/javascript"></script>
+<![endif]-->
+<!--[if lt IE 9]>
+  <script>window.location.href='upgrade-browser.html';</script>
+<![endif]-->
+</head>
+<body class="user-select">
+<header class="header">
+<!-- 导航栏 -->
+<%- include("./nav.ejs") %>
+</header>
+<section class="container">
+  <div class="content-wrap">
+    <div class="content">
+      <div id="conlist">
+        <% for(var i=0; i<datas.length; i++) {%>
+                <article class="excerpt excerpt-1">
+                        <header>
+                            <h2><a href="article.html?id=<%= datas[i]._id %>" title=""><%= datas[i].name %></a></h2>
+                        </header>
+                        <p class="meta">
+                            <time class="time"><i class="glyphicon glyphicon-time"></i> &nbsp;<%= datas[i].optime %></time>
+                            <span class="views"><i class="glyphicon glyphicon-eye-open"></i> &nbsp;<%= datas[i].seenum %></span> <i class="glyphicon glyphicon-comment"></i>&nbsp; <%= datas[i].msgnum %>评论</p>
+                        <p class="note" id="_con"><%= datas[i].con %></p>
+                </article>
+            <% } %>
+      </div>
+    </div>
+  </div>
+  <%- include("./sidebar.ejs") %>
+</section>
+<script src="footer.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/jquery.ias.js"></script> 
+<script src="js/scripts.js"></script>
+</body>
+</html>

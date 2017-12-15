@@ -1,8 +1,35 @@
+/* 侧栏标签 */
+
+#kindlisttags,#kindtags{
+    padding: 10px 18px;
+}
+#kindlisttags span a{
+    color: #999;
+    font-size: 14px;
+    display: block;
+    width: 100px;
+    padding: 2px;
+    margin: 10px 0 0 5px;
+}
+#kindtags span a{
+    color: #999;
+    font-size: 12px;
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 10px 0 0 5px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+#sidelist span a{
+    display: block;
+}
+/* 内容 */
 #_con{
     height: 40px;
     overflow: hidden;
 }
 ._banner{
+    user-select: none;
     width: 100%;
     background: url('/images/BG13.jpg') no-repeat;
     height: 300px;
@@ -1114,7 +1141,7 @@ color:#FFF;
 	float: left;
 	margin-left: -360px;
 	width: 360px;
-	position: relative;
+    position: relative;
 }
 .widget {
 	clear: both;
@@ -1126,12 +1153,12 @@ color:#FFF;
     overflow: hidden;
 }
 .widget h3 {
-	font-size: 18px;
+	font-size: 16px;
 	color: #666;
 	border-bottom: 1px solid #eaeaea;
-	background-color: #fbfbfb;
+	/* background-color: #fbfbfb; */
 	margin: 0;
-	padding: 11px 15px 10px;
+	padding: 11px 4px 10px;
 	 
 }
 .widget h3:hover {

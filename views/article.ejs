@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><%= eassydata.name %> -moorain</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="apple-touch-icon-precomposed" href="images/icon/icon.png">
+<link rel="shortcut icon" href="images/icon/favicon.ico">
+<style>
+    #_content{
+        text-align:left;
+    }
+    h3{
+        margin: 10px 0;
+    }
+    #_con{
+    height: 40px;
+    overflow: hidden;
+}
+pre{
+    margin:5px;
+    padding: 5px;
+}
+#msg_name{
+    margin: 5px 0;
+}
+.sidebar .list-title{
+    font-size: 20px;
+    padding:20px 10px 30px 20px;    
+}
+.sidebar .article-list>li{
+    cursor: pointer;
+        padding: 10px;
+        padding-left: 20px;
+}
+.sidebar .article-list>li:hover{
+    background-color: #eaeaea;
+}
+</style>
+</head>
+<body class="user-select single" style="display:none;">
+<header class="header">
+    <%- include("./nav.ejs") %>
+</header>
+<section class="container">
+  <div class="content-wrap">
+    <div class="content" >
+      <header class="article-header">
+            <h1 class="article-title" id="_title"><%= eassydata.name %></h1>
+            <div class="article-meta"> <span class="item article-meta-time">
+            <time class="time" data-toggle="tooltip" data-placement="bottom"><i class="glyphicon glyphicon-time" id="_optime"></i><%= eassydata.optime %></time>
+            </span> <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" ></span> <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title=""><i class="glyphicon glyphicon-list"></i> <a href="category.html" title="" id="_kind"><%= eassydata.kind %></a></span> <span class="item article-meta-views" data-toggle="tooltip" data-placement="bottom" ><i class="glyphicon glyphicon-eye-open"></i> &nbsp;共 <span id="seenum"><%= eassydata.seenum %></span> 次查看</span> <span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom" ><i class="glyphicon glyphicon-comment"></i>&nbsp;<span id="msgnum"><%= eassydata.msgnum %></span> 个评论</span> </div>
+          </header>
+          <article class="article-content" id="_content">
+                <%- eassydata.html %>
+          </article>
+        <div class="article-tags">标签：<a href="" rel="tag" id="tags"><%= eassydata.kind %></a></div>
+      <div class="relates">
+        <div class="title">
+          <h3>相关推荐</h3>
+        </div>
+        <ul id = "_command">
+        </ul>
+      </div>
+      <div class="title" id="comment">
+        <h3>评论</h3>
+      </div>
+      <div id="respond">
+        <form action="" method="post" id="comment-form">
+          <div class="comment">
+            <div class="comment-title"><img class="avatar" src="images/icon/icon.png" alt="" /></div>
+            <p><input type="text"  id="msg_name" class="comment-box" placeholder="请输入您的名称" tabindex="1"></p>
+            <div class="comment-box">
+              <textarea placeholder="请输入您的评论..." name="comment" id="comment-textarea" cols="100%" rows="3" tabindex="2" ></textarea>
+              <div class="comment-ctrl"> 
+                <div class="comment-prompt"> <i class="fa fa-spin fa-circle-o-notch"></i> <span class="comment-prompt-text"></span> </div>
+                <input type="hidden" value="1" class="articleid" />
+                <button type="button" name="comment-submit" id="comment-submit" tabindex="3" articleid="1">评论</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div id="postcomments">
+        <ol class="commentlist" id="_msgcon">
+        </ol>
+      </div>
+    </div>
+  </div>
+  <aside class="sidebar">
+        <div class="fixed-circle">
+            <div class="widget widget_hot">
+                <p class="list-title">目录</p>
+                <ul class="article-list"></ul>
+            </div>
+        </div>
+      </aside>
+</section>
+<script src="footer.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/scripts.js"></script>
+<script src="./javascripts/template.js"></script>
+<script type="text/html" id="mylist">
+    {{each list as v i}}
+        <li><a href="article.html?id={{v._id}}">{{v.name}}</a></li>
+    {{/each}}
+</script>
+<script type="text/html" id="msglist">
+    {{each msglist as v i}}
+    <li class="comment-content"><span class="comment-f">#{{v.floor}}</span>
+        <div class="comment-avatar"><img class="avatar" src="images/icon/icon.png" alt="" /></div>
+        <!-- 评论区 -->
+        <div class="comment-main">
+          <p>用户:{{v.name}}<span class="time">{{v.date}}</span><br />
+            {{v.con}}
+        </p>
+        </div>
+      </li>
+      {{/each}}
+</script>
+<script src="./javascripts/article.js" type="text/javascript"></script>
+</body>
+</html>

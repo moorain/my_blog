@@ -1,29 +1,10 @@
-// $(".content").hide();
+
 // 获取id
 var h = location.href;
 h = h.split("=");
 var id = h[1];
-(function() {
-  //文章内容
-  if (id) {
-    $.get("/cons.html?id=" + id, function(data) {
-      $("#_content").html(data.html);
-      $("#_title").html(data.name);
-      $("title").html(data.name + "--屈鑫的个人博客");
-      $("#_kind").html(data.kind);
-      $("#tags").html(data.kind);
-      $("#_optime").html(data.optime);
-      $("#seenum").html(data.seenum);
-      // console.log(data.msgnum)
-      if (data.msgnum) {
-        $("#msgnum").html(data.msgnum);
-      } else {
-        $("#msgnum").html("0");
-      }
-      add_artcle_list();
-    });
-  }
-})();
+
+
 $("body").show();
 // 相关推荐
 if (id) {
@@ -72,7 +53,7 @@ if (id) {
 } else {
   location.href = "/index.html";
 }
-
+add_artcle_list();
 // 目录设置
     function add_artcle_list(){
         var titlelist = $("h3");
@@ -89,8 +70,7 @@ if (id) {
         function pointlist(){
             $(".article-list li").on("click",function(){
                 var index =  $(".article-list li").index(this);
-                // console.log(index)
-                $("body").scrollTop(num[index]-80)
+                $(document).scrollTop(num[index]-80)
             })
         }
     }; 

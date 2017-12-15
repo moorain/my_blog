@@ -17,12 +17,10 @@
         h1 {
             margin: 20px 0;
         }
-
         pre {
             margin: 5px;
             padding: 5px;
         }
-
         body,
         html,
         section,
@@ -40,35 +38,32 @@
 
         .side {
             transition: all 1s;
-            width: 30%;
+            width: 24%;
             padding: 20px;
             background-color: white;
             z-index: 999;
+            text-align: center;
         }
-
         .sidefixed {
             position: fixed;
             left: 0;
             top: 0;
         }
-
         .right-btn {
             display: none;
         }
-
         .sharecontant {
-            width: 70%;
+            width: 75%;
             float: right;
-            /* background-color: #f1f1f1; */
             border-left: 1px solid #eee;
+            line-height: 28px;
         }
-
         @media (max-width:768px) {
             .side {
                 position: absolute;
-                /* display: none; */
                 left: -50%;
             }
+            
             .sharecontant {
                 float: none;
                 width: 100%;
@@ -81,25 +76,84 @@
                 border-right: 1px solid #eee;
             }
         }
+        h2{
+            border: 0;
+        }
+        nav h1{
+            margin: 0;
+        }
+        .side{
+            padding:0 80px;
+        }
+        #sidetitle h3{
+            margin: 0;
+            padding: 10px 0;
+        }
+        #sidetitle li a,.others a{
+            display: block;
+            text-align: center;
+            color: #999;
+            font-weight: normal;
+            text-decoration: none;
+        }
+        #sidetitle li {
+            width: 60%;
+        }
+        #sidetitle li:hover{
+            border-bottom:1px solid #eee; 
+        }
     </style>
 </head>
 
 <body>
     <header class="header">
-        <!-- 导航栏 -->
-        <script src="./nav.js"></script>
+            <nav class="navbar navbar-default" id="navbar">
+                    <div class="container"> 
+                      <div class="header-topbar hidden-xs link-border"> 
+                        <!-- <ul class="site-nav topmenu"> 
+                          <li><a href="links.html" rel="nofollow">留言</a></li> 
+                          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" rel="nofollow">关注 <span class="caret"></span></a> 
+                            <ul class="dropdown-menu header-topbar-dropdown-menu"> 
+                              <li><a data-toggle="modal" data-target="#WeChat" rel="nofollow"><i class="fa fa-weixin"></i>微信</a></li> 
+                              <li><a href="#" rel="nofollow"><i class="fa fa-weibo"></i>微博</a></li> 
+                              <li><a data-toggle="modal" data-target="#areDeveloping" rel="nofollow"><i class="fa fa-rss"></i> RSS</a></li> 
+                            </ul> 
+                          </li> 
+                        </ul>  -->
+                    </div>
+                      <div class="navbar-header"> 
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar" aria-expanded="false"> <span class="sr-only"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> 
+                        <h1 class="logo hvr-bounce-in"><a href="/" title=""><img src="images/logo.png" alt=""></a></h1> 
+                      </div> 
+                      <div class="collapse navbar-collapse" id="header-navbar"> 
+                        <ul class="nav navbar-nav navbar-left"> 
+                          <li class = ""><a data-cont="首页" href="/">博客首页</a></li> 
+                          <li><a href="category.html">我的记录</a></li> 
+                        <li><a href="myshare.html">一些分享</a></li> 
+                        <li><a href="./about.html">关于</a></li>
+                        </ul> 
+                        <form class="navbar-form visible-xs" action="/search_result.html" method="get"> 
+                          <div class="input-group"> 
+                            <input type="text" name="keyword" class="form-control" placeholder="请输入关键字" maxlength="20" autocomplete="off"> 
+                            <span class="input-group-btn"> 
+                            <button class="btn btn-default btn-search" name="search" type="submit">搜索</button> 
+                            </span> 
+                        </div> 
+                        </form> 
+                      </div> 
+                    </div> 
+                </nav>                
     </header>
     <div class="">
         <div class="row">
-             
             <div class="pull-left side">
-               <h3>一些环境搭建</h3>
+                <h3 class="others"><a href="">一些网站</a> </h3>
+                <!-- <h3 class="others"><a href="">一些文章</a> </h3> -->
                <ul id="sidetitle">
-                   <li><h3><a href="#nodejs">1. Nodejs</a></h3></li>
                </ul>
                 
             </div>
-            <div class=" sharecontant">
+            <div class="sharecontant">
                 <button class="right-btn btn btn-defalut">>></button>
                 <section>
                     <h1>nodejs</h1>
@@ -563,6 +617,247 @@
 
 
                     <!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
+                </section>
+                <section>
+                    <h1>webpack</h1>
+                    <p>官方文档:<a href="https://webpack.github.io/docs/">https://webpack.github.io/docs/</a></p>
+                    <h2>1. 全局安装webpack （安装webpack命令行工具）</h2>
+                    <p>创建一个pakage.json</p>
+                    <blockquote>
+                    <p>cnpm init -y</p>
+                    <p>安装： npm i webpack@1.14.0  -g  //全局安装<br />
+                    测试： webpack version</p>
+                    </blockquote>
+                    <p>只需要安装一次；</p>
+                    <h2>2.本地安装（项目依赖）</h2>
+                    <p>全局安装相当于只是安装了webpack命令，如果需要在我们的项目中使用， 那么还需要本地安装（项目中安装）。</p>
+                    <blockquote>
+                    <p>npm i webpack@1.14.0 --save-dev  //安装稳定版本（大多都是最新版）<br />
+                    npm i webpack@2.1.0-beta.11 --save-dev //安装指定版本</p>
+                    </blockquote>
+                    <h2>3.编写第一个模块</h2>
+                    <ol>
+                    <li>新建目录 js</li>
+                    <li>新建js文件 a.js  b.js</li>
+                    </ol>
+                    <p>a.js:</p>
+                    <pre><code>var obj = require(&quot;./b.js&quot;);
+                    obj.show();
+                    </code></pre>
+                    
+                    <p>b.js:</p>
+                    <pre><code>//定义模块
+define(function() {
+return {
+        show:function(){
+            console.log(&quot;你好啊！&quot;)
+        }
+    }
+});
+                    </code></pre>
+                    
+                    <p><strong>打包</strong></p>
+                    <p>语法： webpack  入口文件  出口文件 ：</p>
+                    <blockquote>
+                    <p>webpack  ./js/a.js  ./bundle.js</p>
+                    </blockquote>
+                    <p>生成了一个bundle.js  打包生成的文件。使用时直接引入bundle.js。</p>
+                    <h2>4.运行打包的结果</h2>
+                    <p>新建html 引入bundle.js</p>
+                    <pre><code> &lt;script src=&quot;./bundle.js&quot;&gt;&lt;/script&gt;
+                    </code></pre>
+                    
+                    <p><img src="https://i.imgur.com/PPMd1Uo.jpg" /></p>
+                    <h2>webpack的配置文件</h2>
+                    <h3>1.项目根目录创建 webpack.config.js文件并编写基本格式</h3>
+                    <pre><code> 
+//引入webpack模块（为了使用其的一些插件）
+var webpack = require(&quot;webpack&quot;)
+
+//暴露配置信息
+module.exports = {
+    // 声明入口文件
+    entry:'./js/a.js',
+    // 声明出口文件
+    output:{
+        // 出口文件的路径
+        path:'./output',
+        // 出口文件的名称
+        filename:'bundle.js'
+    }
+}
+                    </code></pre>
+                    
+                    <h3>2.执行打包命令</h3>
+                    <blockquote>
+                    <p>webpack</p>
+                    </blockquote>
+                    <p>在output目录下打包生成了bundle.js ， 使用时直接引入。</p>
+                    <h2>loader加载器</h2>
+                    <h3>样式加载器：</h3>
+                    <p>用CSS样式做实例：</p>
+                    <ol>
+                    <li>
+                    <p>css-loader
+                    将CSS文件转换成JS模块</p>
+                    </li>
+                    <li>
+                    <p>style-loader
+                    将JS模块中的CSS添加到页面上——添加一个style标签</p>
+                    </li>
+                    </ol>
+                    <h4>1.安装加载器</h4>
+                    <blockquote>
+                    <p>cnpm i css-loader style-loader --save-dev</p>
+                    </blockquote>
+                    <h4>2.编写配置文件支持CSS模块</h4>
+                    <p>webpack.config.js:</p>
+                    <pre><code>//引入webpack模块
+var webpack=require('webpack');
+
+//暴露配置信息
+module.exports={
+    //声明入口文件
+    entry:'./05/main.js',
+
+    //声明出口文件
+    output:{
+        //出口文件的路径
+        path:'./output',
+        //出口文件的名称
+        filename:'bundle.js'
+    },
+
+    //模块加载器配置
+    module:{
+        loaders:[
+            //语法：{test:/正则表达式匹配文件类型/, loader:'加载器'}
+            {test:/\.css$/, loader:'style-loader!css-loader'}
+        ]
+    }
+}
+                    </code></pre>
+                    
+                    <p>main.js : </p>
+                    <pre><code>// 引入css模块 (如果没有安装加载器，则无法解析)
+                    require(&quot;../css/index.css&quot;)
+                    </code></pre>
+                    
+                    <p><strong>其他的模块加载器:</strong></p>
+                    <p><strong>less:</strong></p>
+                    <blockquote>
+                    <p>cnpm install less-loader --save-dev</p>
+                    </blockquote>
+                    <pre><code>{test:/\.less$/, loader: 'style!css!less'}
+                    </code></pre>
+                    
+                    <p><strong>资源加载器:</strong></p>
+                    <blockquote>
+                    <p>cnpm install file-loader url-loader --save-dev</p>
+                    </blockquote>
+                    <pre><code>//url资源加载器-大小限定：超出大小的资源以文件形式存在，未超出限定大小则打包成代码
+                    {test:/\.(jpg|png|gif)$/, loader:'url-loader?name=[path]/[name].[ext]&amp;limit=8192'}
+                    </code></pre>
+                    
+                    <h2>webpack-dev-server</h2>
+                    <p>安装:</p>
+                    <blockquote>
+                    <p>cnpm install webpack-dev-server@1.16.2 -g<br />
+                    cnpm install webpack-dev-server //本地安装</p>
+                    </blockquote>
+                    <p><strong>注意 :这里的版本应尽量和webpack版本相近</strong> </p>
+                    <p>使用:</p>
+                    <blockquote>
+                    <p>webpack-dev-server --hot --inline</p>
+                    </blockquote>
+                    <p>--hot 采用热部署，不用F5就可以刷新页面（AJAX）。<br />
+                    --inline无需刷新页面就可以更新(刷新的代码直接嵌套在我们的打包文件中)。</p>
+                    <h2>webpack插件</h2>
+                    <p>插件列表： <a href="http://webpack.github.io/docs/list-of-plugins.html">http://webpack.github.io/docs/list-of-plugins.html</a></p>
+                    <p>实例:添加注释添加到生成的文件的头部的插件</p>
+                    <p>webpack.config.js : </p>
+                    <pre><code>
+module.exports = {
+.....
+.....
+.....
+plugins:[
+        //注释添加到生成的文件的头部
+        new webpack.BannerPlugin(&quot;webpack 打包制作&quot;),
+        //压缩插件
+        new webpack.optimize.UglifyJsPlugin({
+            //去掉所有注释
+            comments:false,
+            //抑制警告
+            compress:{
+                warnings:false
+            }
+        }),
+    ]
+};
+                    </code></pre>
+                    
+                    <h2>异步加载模块</h2>
+                    <p>webpack 提供的方式：</p>
+                    <pre><code>require.ensure(dependencies: String[], callback: function([require]), [chunkName: String])
+                    </code></pre>
+                    
+                    <p>dependencies:依赖的列表<br />
+                    callback:模块加载完毕的列表</p>
+                    <p>实例:</p>
+                    <p>html代码:</p>
+                    <pre><code>&lt;input type=&quot;button&quot; value=&quot;点我&quot; id=&quot;btn&quot; /&gt;
+                    &lt;script src=&quot;output/bundle.js&quot;&gt;&lt;/script&gt;
+                    </code></pre>
+                    
+                    <p>webpack.config.js:</p>
+                    <pre><code>//引入webpack模块
+var webpack=require('webpack');
+
+//暴露配置信息
+module.exports={
+    //声明入口文件
+    entry:'./main.js',
+
+    //声明出口文件
+    output:{
+        //出口文件的路径
+        path:'output/',
+        //出口文件的名称
+        filename:'bundle.js',
+        //设置公共的静态目录，用于让webpack-dev-server生成的文件与出口路径保持一致
+        publicPath:'output/'
+    }
+}
+                    </code></pre>
+                    
+                    <p>main.js:</p>
+                    <pre><code>document.getElementById('btn').onclick=function(){
+//异步加载模块：触发事件时才去回去数据，让首次打开网页速度变快
+require.ensure([], function(require) {
+    var obj=require('./sub.js');
+    obj.show();
+    var $=require('jquery');
+    console.log($);
+});
+}
+                    </code></pre>
+                    
+                    <p>sub.js :</p>
+                    <pre><code>define(function(){
+return {
+    show:function(){
+        alert('你好哇!');
+    }
+}
+});
+                    </code></pre>
+                    
+                    <h3>webpack的模版:</h3>
+                    <p><a href="https://github.com/chemdemo/webpack-seed">https://github.com/chemdemo/webpack-seed</a></p>
+                    <p><a href="https://github.com/react-webpack-generators/generator-react-webpack#readme">https://github.com/react-webpack-generators/generator-react-webpack#readme</a></p>
+                    
+
                 </section>
             </div>
         </div>

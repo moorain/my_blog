@@ -4,6 +4,7 @@ var markdown = require('markdown-js');
 var fs = require('fs');
 var mongoose = require('./connect.js')
 
+
 var textSchema = new mongoose.Schema({
     "name":String,
     "con":String,  
@@ -17,24 +18,7 @@ var textSchema = new mongoose.Schema({
 // 发布模型
 var txtModel= mongoose.model('con',textSchema,'con');
 
-/* router.get('/markdown', function(req, res) {  
-    res.render('index.md',{layout:true});
- })
-
-router.get('/mark.html',function(req,res){
-    var html1 = markdown.makeHtml("[Java Eye](http://www.iteye.com/ \"Click\") ");  
-    res.send(html1)
-  }) */
-// 查询数据
-/* router.get('/mktxt.html',function(req,res){
-    txtModel.find({"name":"333"}).exec(function(err,data){
-        console.log(data)
-        var html = markdown.makeHtml(data[0].con);  
-        res.send(html)  
-    }) */
-// 存储数据
-// })
-
+// 后台管理保存文章
 router.post('/con_save.html',function(req,res){
     var name = req.body.name;
     var con = req.body.con;
@@ -61,12 +45,23 @@ router.post('/con_save.html',function(req,res){
 
 })
 
-// 渲染数据
+// 后台管理渲染文章列表
 router.get('/addlist.html',function(req,res){
     txtModel.find({}).sort({"optime":1}).exec(function(err,data){
         res.send(data);
     })
 })
+
+// ejs文章列表渲染
+router.get('/category.html',function(req,res){
+    txtModel.find({}).sort({"optime":-1}).exec(function(err,data){
+        res.render('articlelist', {
+            datas:data
+        });
+    })
+})
+
+
 // post页面渲染
 router.get('/cons.html',function(req,res){
     var id = req.query.id;
@@ -88,7 +83,14 @@ router.get('/cons.html',function(req,res){
         msgModel.find({"txtid":id},function(err,data){//找到该文章下的评论
             _msgnum = data.length;
             datas.msgnum = data.length;
-            res.send(datas);//发送
+
+            //res.send(datas);//发送
+            //
+            res.render('article', {
+                eassydata:datas
+            });
+
+
             // 保存浏览数和评论数到文章数据库中
             that.msgnum = _msgnum;
             that.seenum = seenum;
@@ -104,7 +106,7 @@ router.get('/cons.html',function(req,res){
         redirect("/index.html")
     }
 })
-
+// 后台管理删除 修改文章
 // 删除
 router.get('/article_delete.html',function(req,res){
     var id = req.query.id;
@@ -117,7 +119,6 @@ router.get('/article_delete.html',function(req,res){
     })
 })
 //回填_修改
-
 router.get('/artile_edit.html',function(req,res){
     var id = req.query.id;
     txtModel.findById(id,function(err,data){
@@ -133,9 +134,7 @@ router.post('/con_edit_save.html',function(req,res){
     var author = req.body.author;
     var kind = req.body.kind;
     var optime = req.body.optime;
-    // console.log(name,con,author,kind,optime)
     var id = req.body.id;
-    // console.log(id);
     txtModel.findById(id,function(erre,data){
         data.name = name;
         data.con = con;
@@ -188,10 +187,8 @@ router.post('/comment_save.html',function(req,res){
     var name = req.body.name;
     var con = req.body.con;
     var date = req.body.date;
-    // console.log(name,con,date,txtid)
     msgModel.find({"txtid":txtid}).exec(function(err,data){
        thisfloor = data.length+1;
-    //    console.log(thisfloor);
        var msg = new msgModel();
        msg.name = name;
        msg.con = con;
@@ -210,9 +207,7 @@ router.post('/comment_save.html',function(req,res){
 // 显示评论的请求
 router.get('/show_msg.html',function(req,res){
     var txtid = req.query.id;
-    // console.log("当前id",txtid);
     msgModel.find({"txtid":txtid}).exec(function(err,data){
-        // console.log(data);
         res.send(data);
     })
 })
@@ -228,22 +223,7 @@ router.get('/search-content.html',function(req,res){
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
 // 后台管理
-
-
-
-
 // 后台管理评论
 router.get('/admin_show_msg.html',function(req,res){
     msgModel.find({}).exec(function(err,data){
@@ -262,5 +242,61 @@ router.get('/delete_msg.html',function(req,res){
 })
 
 
+
+/* GET home page. */
+// ejs渲染主页
+router.get('/', function(req, res, next) {
+    txtModel.find({}).sort({"optime":-1}).limit(8).exec(function(err,data){
+        console.log(data[0]);
+        res.render('index', {
+            datas:data
+        });
+    })
+  });
+
+// ejs渲染文章
+router.get('/article.html',function(req,res){
+    var id = req.query.id;
+    if(id != ""){
+    txtModel.findById(id,function(err,data){
+        //对象保存给that 避免冲突
+        var that = data;
+        var datas = {};
+        var html = markdown.makeHtml(data.con);
+        datas.html = html;
+        datas.name = data.name;
+        datas.optime = data.optime;
+        datas.kind = data.kind;
+        datas.seenum = data.seenum;
+        var _msgnum = 0;//评论数量
+        // 查看数自增
+        var seenum = data.seenum;
+        seenum++;
+        msgModel.find({"txtid":id},function(err,data){//找到该文章下的评论
+            _msgnum = data.length;
+            datas.msgnum = data.length;
+
+            //res.send(datas);//发送
+            //
+            res.render('article', {
+                eassydata:datas
+            });
+
+
+            // 保存浏览数和评论数到文章数据库中
+            that.msgnum = _msgnum;
+            that.seenum = seenum;
+            that.save(function(err){
+                if(err){
+                    throw err;
+                }else{
+                }
+            })
+        }) 
+    })
+    }else{
+        redirect("/index.html")
+    }
+})
 
 module.exports = router;

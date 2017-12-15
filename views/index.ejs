@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moorain-一些前端的学习记录</title>
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="apple-touch-icon-precomposed" href="images/icon/icon.png">
+<link rel="shortcut icon" href="images/icon/favicon.ico">
+<script src="./javascripts/baidutj.js"></script>
+</head>
+<body class="user-select">
+<header class="header">
+    <%- include("./nav.ejs") %>
+</header>
+<section class="container">
+    <div class="_banner hidden-xs">
+        <div id="banner_title" class="hidden-xs">
+                <img src="./images/welcome.png" width="500px" alt="">
+                <h3>欢迎来到我的博客...</h3>
+        </div>
+    </div> 
+  <div class="content-wrap">
+    <div class="content">
+     <article class="excerpt-minic excerpt-minic-index" id="everyday" style = "padding:0">
+        <div class="col-md-12" ><p  id="content"></p>
+            <p id="chcontent"></p>
+        </div>
+        <div>
+            <span id="cibaauthor"></span>
+        </div>
+    </article>
+    <div id="conlist">
+        <% for(var i=0; i<datas.length; i++) {%>
+            <article class="excerpt excerpt-1">
+                    <header>
+                        <h2><a href="article.html?id=<%= datas[i]._id %>" title=""><%= datas[i].name %></a></h2>
+                    </header>
+                    <p class="meta">
+                        <time class="time"><i class="glyphicon glyphicon-time"></i> &nbsp;<%= datas[i].optime %></time>
+                        <span class="views"><i class="glyphicon glyphicon-eye-open"></i> &nbsp;<%= datas[i].seenum %></span> <i class="glyphicon glyphicon-comment"></i>&nbsp; <%= datas[i].msgnum %>评论</p>
+                    <p class="note" id="_con"><%= datas[i].con %></p>
+            </article>
+        <% } %>
+    </div>
+    </div>
+    </div>
+
+    <%- include("./sidebar.ejs") %>
+</section>
+<script src="footer.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="./javascripts/template.js"></script>
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/scripts.js"></script>
+<script type="text/javascript">  
+    function jsonpCallback(data) {  
+        $("#content").html(data.content);
+        $("#chcontent").html(data.note)
+        $("#cibaauthor").html("每日一句 &nbsp;"+data.dateline)
+        console.log(data.note+"--------每日一句")
+        console.log("欢迎光临我的博客! ")
+    }
+</script>
+<script type="text/javascript" src="http://open.iciba.com/dsapi?callback=jsonpCallback"></script>
+</body>
+</html>
