@@ -26,6 +26,11 @@
 <!--[if lt IE 9]>
   <script>window.location.href='upgrade-browser.html';</script>
 <![endif]-->
+<style>
+    .now-page{
+        background-color: #ccc;
+    }
+</style>
 </head>
 <body class="user-select">
 <header class="header">
@@ -51,10 +56,51 @@
     </div>
   </div>
   <%- include("./sidebar.ejs") %>
+
+  <nav aria-label="Page navigation">
+    <ul class="pagination" id="pagemenu">
+       <li>
+        <a href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li><a href="/page.html?page=1">1</a></li>
+      <li><a href="#">2</a></li>
+      <!-- <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">5</a></li> -->
+      <li>
+        <a href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li> 
+
+    </ul>
+  </nav>
 </section>
+
 <script src="footer.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/bootstrap.min.js"></script> 
 <script src="js/jquery.ias.js"></script> 
 <script src="js/scripts.js"></script>
+<script type="text/javascript">
+    // 渲染分页按钮
+    (function(){
+        $.get('/pagenum.html',function(data){
+            console.log(data.pagenum)
+            var html =' <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+            for(var i =1;i<data.pagenum+1;i++){
+                html+='<li><a href="/page.html?page='+i+'">'+i+'</a></li>'
+            }
+            html+='  <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>';
+            $("#pagemenu").html(html);
+            var l = location.href;
+            var o = l.split("=")
+            var i = parseInt(o[1]) ;
+            var list = $('#pagemenu li')
+            $(list[i]).addClass('active').siblings().removeClass('active');
+        })
+    })()
+</script>
 </body>
 </html>

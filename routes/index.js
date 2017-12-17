@@ -52,14 +52,7 @@ router.get('/addlist.html',function(req,res){
     })
 })
 
-// ejs文章列表渲染
-router.get('/category.html',function(req,res){
-    txtModel.find({}).sort({"optime":-1}).exec(function(err,data){
-        res.render('articlelist', {
-            datas:data
-        });
-    })
-})
+
 
 
 // post页面渲染
@@ -281,6 +274,7 @@ router.get('/article.html',function(req,res){
             res.render('article', {
                 eassydata:datas
             });
+
             // 保存浏览数和评论数到文章数据库中
             that.msgnum = _msgnum;
             that.seenum = seenum;
@@ -296,5 +290,40 @@ router.get('/article.html',function(req,res){
         redirect("./")
     }
 })
+
+// ejs文章列表渲染
+router.get('/category.html',function(req,res){
+    // txtModel.find({}).sort({"optime":-1}).limit(8).exec(function(err,data){
+    //     res.render('articlelist', {
+    //         datas:data
+    //     });
+    // })
+    redirect('/page.html?page=1')
+});
+
+// 分页列表
+router.get('/pagenum.html',function(req,res){
+    var shownum = 8;//定义每页要显示多少条数据
+    txtModel.find({}).exec(function(err,data){
+        var pagemin={};
+        pagemin.num = data.length;
+        pagemin.pagenum =  pagemin.num/shownum;
+        console.log(pagemin)
+        res.send(pagemin);
+    })
+})
+
+// 点击分页
+router.get('/page.html',function(req,res){
+    // console.log(1111)
+    var num = req.query.page;
+    console.log(num);
+    txtModel.find({}).sort({"optime":-1}).skip(8*(num-1)).limit(8).exec(function(err,data){
+        res.render('articlelist', {
+            datas:data
+        });
+    })
+})
+
 
 module.exports = router;
