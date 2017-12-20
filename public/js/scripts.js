@@ -60,10 +60,10 @@ $(window).scroll(function () {
     var sidebar = $('.sidebar');
     var sidebarHeight = sidebar.height();
     var windowScrollTop = $(window).scrollTop();
-    if (windowScrollTop >=260 && sidebar.length) {
+    if (windowScrollTop >=460 && sidebar.length) {
         $('.fixed').css({
             'position': 'fixed',
-            'top': '70px',
+            'top': '0px',
             'width': '360px'
         });
     } else {
