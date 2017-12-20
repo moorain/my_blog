@@ -1,13 +1,54 @@
+/* logo */
+#_logo{
+    color:#999;
+    font-family:  "Times New Roman";
+    font-size:48px;
+    margin: 20px 30px 0px;
+
+}
+#logo-tite{
+    position:absolute;
+    top:-15px;
+    left:0px;
+    font-family: "Times New Roman";
+    color:#777;
+}
+#logo-tite p{
+    color:#999;
+    padding-top: 10px;
+}
+
+/* navbar */
+#navbar{
+    position: relative;
+    margin-top: 30px;
+}
+#header-navbar{
+    border-bottom: 1px solid #EAEAEA;
+}
+#navbarlist{
+    margin-top: 10px;
+    margin-right: 60px;
+}
+#navbarlist li{
+    padding: 0 10px;
+}
 /* 侧栏标签 */
 
 #kindlisttags,#kindtags{
     padding: 10px 18px;
+}
+#kindlisttags span:hover a{
+    transition: all 0.1s;
+    color: #F73B3B;
+    font-size: 15px;
 }
 #kindlisttags span a{
     color: #999;
     font-size: 14px;
     display: block;
     width: 100px;
+    height: 20px;
     padding: 2px;
     margin: 10px 0 0 5px;
 }
@@ -84,11 +125,11 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, butt
 }
 body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, button, input, textarea, p, span, th, td, article, aside, nav, section, img, a {
 	outline: none;
-	transition: all 0.30s ease-in-out;
+	/* transition: all 0.30s ease-in-out;
 	-webkit-transition: all 0.30s ease-in-out;
 	-moz-transition: all 0.30s ease-in-out;
 	-o-transition: all 0.30s ease-in-out;
-	-ms-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out; */
 }
 article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
 	display: block;
@@ -238,6 +279,7 @@ color:#FFF;
 
 /*容器*/
 @media (min-width:768px) {
+    
 .container {
 	width: auto;
 }
@@ -320,9 +362,6 @@ color:#FFF;
 	min-height: 60px;
 	margin-bottom: 20px;
 	padding: 0;
-/* 	-moz-box-shadow: 0px 0px 2px rgba(0,0,0,.1);
-	-webkit-box-shadow: 0px 0px 2px rgba(0,0,0,.1);
-	box-shadow: 0px 0px 2px rgba(0,0,0,.1); */
 }
 .shadow {
 	z-index: 1000;
@@ -332,29 +371,15 @@ color:#FFF;
 }
 .navbar-nav>li>a {
 	color: #777;
-	padding: 0px 15px;
-	line-height: 60px;
-	font-size: 16px;
+	padding: 0px 10px;
+	line-height:41px;
+	font-size: 15px;
 }
 .container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
 	margin-right: 0px;
 	margin-left: 0px;
 }
-/*LOGO效果*/
-/*
-.navbar>.container .logo:hover {
-	-moz-transition: all 0.6s ease-in-out;
-	-webkit-transition: all 0.6s ease-in-out;
-	-o-transition: all 0.6s ease-in-out;
-	-ms-transition: all 0.6s ease-in-out;
-	transition: all 0.6s ease-in-out;
-	transform: rotate(5deg);
-	-moz-transform: rotate(5deg);
-	-webkit-transform: rotate(5deg);
-	-o-transform: rotate(5deg);
-	-ms-transform: rotate(5deg);
-}
-*/
+
 .navbar>.container .logo {
 	display: inline-block;
 	vertical-align: middle;
@@ -374,10 +399,11 @@ color:#FFF;
 	transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
 }
 .navbar-toggle {
+    /* margin-right: 10px; */
 	position: relative;
 	float: right;
 	padding: 9px 10px;
-	margin: 12px 0px 0px;
+	margin: 12px 10px 0px;
 	background-color: transparent;
 	background-image: none;
 	border: 1px solid transparent;
@@ -399,44 +425,16 @@ color:#FFF;
 	background-color: transparent;
 }
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
-	color: #3399CC;
-	background: none;
+	/* color: #3399CC; */
+    background: #fff;
+    border:1px solid #ccc;
+    border-bottom:0;
+    position: relative;
+    bottom: -1px;
+
 }
 
-/*导航菜单划过效果*/
-/* .navbar-nav li a:after {
-	content: '';
-	width: 5px;
-	height: 100px;
-	background-color: #3399CC;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
-	border-radius: 50%;
-	-webkit-transform: rotate(45deg) translate(0%, 0%);
-	-moz-transform: rotate(45deg) translate(0%, 0%);
-	-ms-transform: rotate(45deg) translate(0%, 0%);
-	-o-transform: rotate(45deg) translate(0%, 0%);
-	transform: rotate(45deg) translate(0%, 0%);
-	-webkit-transform-origin: 100% 50%;
-	-moz-transform-origin: 100% 50%;
-	-ms-transform-origin: 100% 50%;
-	-o-transform-origin: 100% 50%;
-	transform-origin: 100% 50%;
-	position: absolute;
-	top: 50px;
-	left: 35px;
-	margin-left: 50px;
-	margin-top: -110px;
-	opacity: 0;
-	-webkit-opacity: 0;
-	-moz-opacity: 0;
-}
-.navbar-nav li a:hover:after {
-	-webkit-animation: comets 0.5s forwards;
-	-moz-animation: comets 0.5s forwards;
-	-ms-animation: comets 0.5s forwards;
-	animation: comets 0.5s forwards;
-} */
+
 @-moz-keyframes comets {
  0% {
  width: 0;
@@ -535,6 +533,12 @@ color:#FFF;
 }
 
 @media (max-width: 768px) {
+    .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
+        border:0;
+    }
+    .content-wrap{
+        margin-top: 0px;
+    }
 .navbar-nav {
 	overflow: hidden;
 }
@@ -543,11 +547,13 @@ color:#FFF;
 .content-wrap {
 	width: 100%;
 	float: left;
-	min-height: 1000px;
+    min-height: 1000px;
+    margin-top: 10px;
 }
 .content {
 	position: relative;
-	min-height: 500px;
+    min-height: 500px;
+    margin-top: 20px;
 	margin-right: 380px;
     margin-bottom: 15px;
     border-right: 1px solid #EAEAEA;
@@ -1142,6 +1148,7 @@ color:#FFF;
 	margin-left: -360px;
 	width: 360px;
     position: relative;
+    margin-top:30px;
 }
 .widget {
 	clear: both;
@@ -1993,6 +2000,7 @@ color:#FFF;
 .pageside {
 	display: none;
 }
+
 }
 
 @media (max-width:480px) {

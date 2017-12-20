@@ -102,35 +102,48 @@
         #sidetitle li:hover{
             border-bottom:1px solid #eee; 
         }
+        #logo-tite{
+            position:absolute;
+            top:-15px;
+            left:0px;
+            font-family: "Times New Roman";
+            color:#777;
+        }
+        #logo-tite p{
+            color:#999;
+            padding-top: 10px;
+        }
+        
     </style>
 </head>
 
 <body>
     <header class="header">
             <nav class="navbar navbar-default" id="navbar">
+   
                     <div class="container"> 
-                      <div class="header-topbar hidden-xs link-border"> 
-                        <!-- <ul class="site-nav topmenu"> 
-                          <li><a href="links.html" rel="nofollow">留言</a></li> 
-                          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" rel="nofollow">关注 <span class="caret"></span></a> 
-                            <ul class="dropdown-menu header-topbar-dropdown-menu"> 
-                              <li><a data-toggle="modal" data-target="#WeChat" rel="nofollow"><i class="fa fa-weixin"></i>微信</a></li> 
-                              <li><a href="#" rel="nofollow"><i class="fa fa-weibo"></i>微博</a></li> 
-                              <li><a data-toggle="modal" data-target="#areDeveloping" rel="nofollow"><i class="fa fa-rss"></i> RSS</a></li> 
-                            </ul> 
-                          </li> 
-                        </ul>  -->
+                            <div id="logo-tite" class="hidden-xs ">
+                                    <h1 style="color:#777;font-size:36px;font-weight:normal;">MooRain</h1>
+                                    <p style="padding:0px 0px ;">行到水穷处，坐看云起时</p>
+                                </div>
+                      <div class="header-topbar hidden-xs  link-border"> 
                     </div>
                       <div class="navbar-header"> 
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar" aria-expanded="false"> <span class="sr-only"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> 
-                        <h1 class="logo hvr-bounce-in"><a href="/" title=""><img src="images/logo.png" alt=""></a></h1> 
+                            <h1 class="logo hvr-bounce-in  visible-xs"><a id="_logo" href="/" title="">
+                                Moorain
+                            </a>
+                            </h1>
                       </div> 
                       <div class="collapse navbar-collapse" id="header-navbar"> 
-                        <ul class="nav navbar-nav navbar-left"> 
-                          <li class = ""><a data-cont="首页" href="/">博客首页</a></li> 
-                          <li><a href="page.html?page=1">我的记录</a></li> 
-                        <li><a href="myshare.html">一些分享</a></li> 
-                        <li><a href="./about.html">关于</a></li>
+                        <ul class="nav navbar-nav navbar-right" id="navbarlist"> 
+                            <li class = "indexpage ">
+                                <a data-cont="首页" href="/">
+                                <span class="glyphicon glyphicon-home"></span>
+                                    博客首页</a></li> 
+                            <li class="_pages"><a href="/page.html?page=1"><span class="glyphicon glyphicon-th-list"></span> 一些记录</a></li> 
+                            <li class="active"><a href="myshare.html"> <span class="glyphicon glyphicon-list-alt"></span> 一些分享</a></li> 
+                            <li><a href="./about.html"> <span class="glyphicon glyphicon-user"></span> 关于其他</a></li>
                         </ul> 
                         <form class="navbar-form visible-xs" action="/search_result.html" method="get"> 
                           <div class="input-group"> 
@@ -142,8 +155,15 @@
                         </form> 
                       </div> 
                     </div> 
-                </nav>                
-    </header>
+                </nav>
+                
+             
+              
+    
+    
+    
+    
+            </header>
     <div class="">
         <div class="row">
             <div class="pull-left side">

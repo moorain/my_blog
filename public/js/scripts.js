@@ -1,3 +1,10 @@
+(function(){
+    var url = location.href;
+    if(url.indexOf("page.html")>0||url.indexOf("article.html")>0){
+        $('._pages').addClass("active");
+        $('.indexpage').removeClass('active')
+    }
+})()
 
 //导航智能定位
 $.fn.navSmartFloat = function () {
@@ -32,7 +39,7 @@ $.fn.navSmartFloat = function () {
     });
 };
 //启用导航定位
-$("#navbar").navSmartFloat();
+// $("#navbar").navSmartFloat();
  
 //返回顶部按钮
 $("#gotop").hide();

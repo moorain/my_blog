@@ -308,22 +308,34 @@ router.get('/pagenum.html',function(req,res){
         var pagemin={};
         pagemin.num = data.length;
         pagemin.pagenum =  pagemin.num/shownum;
-        console.log(pagemin)
+        // console.log(pagemin)
         res.send(pagemin);
     })
 })
 
 // 点击分页
 router.get('/page.html',function(req,res){
-    // console.log(1111)
     var num = req.query.page;
-    console.log(num);
-    txtModel.find({}).sort({"optime":-1}).skip(8*(num-1)).limit(8).exec(function(err,data){
-        res.render('articlelist', {
-            datas:data
-        });
-    })
+    var kind = req.query.kind;
+    if(num){
+        txtModel.find({}).sort({"optime":-1}).skip(8*(num-1)).limit(8).exec(function(err,data){
+            res.render('articlelist', {
+                datas:data
+            });
+        })
+    }else if(kind){
+        // console.log(kind)
+        txtModel.find({"kind":kind}).sort({"optime":-1}).exec(function(err,data){
+            // console.log(data);
+            res.render('articlelist', {
+                datas:data
+            });
+        })
+    }
+    
+
 })
+
 
 
 module.exports = router;
